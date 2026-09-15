@@ -127,21 +127,22 @@
     pointer-events: none;
   }
   .corner-tag {
-    position: absolute;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     color: var(--gray-light);
     opacity: 0.55;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .corner-tag::before { content: "// "; color: var(--blue); }
 
   /* ---------- Logo ---------- */
   .logo-lockup { display: flex; align-items: center; }
-  .logo-mark { height: 38px; flex-shrink: 0; }
+  .logo-mark { height: 46px; flex-shrink: 0; transition: height 0.3s ease; }
   .logo-mark img { height: 100%; width: auto; object-fit: contain; display: block; }
-  footer .logo-mark { height: 46px; }
+  header:not(.scrolled) .logo-mark { height: 52px; }
+  footer .logo-mark { height: 56px; }
 
   /* ---------- Buttons ---------- */
   .btn {
@@ -369,6 +370,25 @@
   .proy-card .plus { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-light); display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 1.1rem; }
   .proy-card span { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
+  /* ---------- Empresas colaboradoras ---------- */
+  .colaboradores { background: var(--bg-light-alt); }
+  .collab-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--border-light); border: 1px solid var(--border-light);
+  }
+  @media (min-width: 640px) { .collab-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 960px) { .collab-grid { grid-template-columns: repeat(6, 1fr); } }
+  .collab-item {
+    background: var(--bg-light);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    padding: 34px 18px; text-align: center;
+    filter: grayscale(1); opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  .collab-item:hover { filter: grayscale(0); opacity: 1; transform: translateY(-3px); }
+  .collab-item svg { width: 32px; height: 32px; color: var(--navy); }
+  .collab-item span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); }
+
   /* ---------- CTA ---------- */
   .cta-block {
     background: linear-gradient(160deg, #05070d 0%, #0047A6 220%);
@@ -420,6 +440,8 @@
   /* ---------- Utils ---------- */
   .hide-mobile { display: none; }
   @media (min-width: 700px) { .hide-mobile { display: block; } }
+  .hide-tablet { display: none; }
+  @media (min-width: 960px) { .hide-tablet { display: block; } }
 </style>
 
 <div class="nav-overlay" id="navOverlay"></div>
@@ -451,7 +473,7 @@
     <div class="wrap">
       <div class="hero-top-tag">
         <span class="corner-tag hide-mobile">CEMA27 INTEGRAL SOLUTIONS S.L.</span>
-        <span class="corner-tag hide-mobile">SANT HIPÒLIT DE VOLTREGÀ · BARCELONA</span>
+        <span class="corner-tag hide-tablet">SANT HIPÒLIT DE VOLTREGÀ · BARCELONA</span>
       </div>
       <div class="hero-body">
         <h1 class="reveal">SOLUCIONES<br>QUE HACEN<br><span class="blue">INDUSTRIA</span>.</h1>
@@ -584,6 +606,43 @@
         <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
         <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
         <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EMPRESAS COLABORADORAS ==========
+       Logos y nombres de ejemplo (inventados) para mostrar el formato de la sección.
+       Sustituir por las empresas reales de Cema27 antes de publicar. -->
+  <section class="colaboradores">
+    <div class="wrap">
+      <div class="eyebrow reveal">Colaboraciones</div>
+      <h2 class="section-title reveal reveal-1">Empresas con las<br>que colaboramos.</h2>
+      <p class="section-sub reveal reveal-2">Ejemplo ilustrativo — se sustituirá por las empresas reales.</p>
+      <div class="collab-grid reveal reveal-3">
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l8 5v10l-8 5-8-5V7l8-5z"/></svg>
+          <span>Norvex Industrial</span>
+        </div>
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg>
+          <span>Acerplus</span>
+        </div>
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l5-5 4 4 9-9M21 7h-5v5"/></svg>
+          <span>Metaltech Group</span>
+        </div>
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l9 16H3L12 3z"/></svg>
+          <span>Ferrocom</span>
+        </div>
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
+          <span>Industrias Vallès</span>
+        </div>
+        <div class="collab-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="14" width="4" height="7"/><rect x="10" y="9" width="4" height="12"/><rect x="17" y="4" width="4" height="17"/></svg>
+          <span>Steelcore Systems</span>
+        </div>
       </div>
     </div>
   </section>
