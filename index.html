@@ -138,11 +138,11 @@
   .corner-tag::before { content: "// "; color: var(--blue); }
 
   /* ---------- Logo ---------- */
-  .logo-lockup { display: flex; align-items: center; }
-  .logo-mark { height: 46px; flex-shrink: 0; transition: height 0.3s ease; }
-  .logo-mark img { height: 100%; width: auto; object-fit: contain; display: block; }
-  header:not(.scrolled) .logo-mark { height: 52px; }
-  footer .logo-mark { height: 56px; }
+  .logo-lockup { display: flex; align-items: center; flex-shrink: 0; }
+  .logo-mark { height: 52px; flex-shrink: 0; transition: height 0.3s ease; }
+  .logo-mark img { height: 100%; width: auto; max-width: none; object-fit: contain; display: block; }
+  header:not(.scrolled) .logo-mark { height: 58px; }
+  footer .logo-mark { height: 64px; }
 
   /* ---------- Buttons ---------- */
   .btn {
