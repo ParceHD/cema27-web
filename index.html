@@ -703,8 +703,16 @@
             </select>
           </div>
           <div class="form-row"><label for="cf-mensaje">Mensaje</label><textarea id="cf-mensaje" name="mensaje" rows="4" required></textarea></div>
+          <div class="form-row">
+            <label for="cf-canal">Enviar con</label>
+            <select id="cf-canal" name="canal">
+              <option value="gmail">Gmail</option>
+              <option value="outlook">Outlook</option>
+              <option value="default">Mi aplicación de correo predeterminada</option>
+            </select>
+          </div>
           <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-          <div class="contact-form-note">Se abrirá Gmail con tu mensaje ya redactado, listo para enviar a info@cema27.com.</div>
+          <div class="contact-form-note">Elige con qué correo quieres enviarlo. Se abrirá con tu mensaje ya redactado, listo para enviar a info@cema27.com.</div>
         </form>
       </div>
     </div>
@@ -826,6 +834,7 @@
     const email = contactForm.email.value.trim();
     const servicio = contactForm.servicio.value;
     const mensaje = contactForm.mensaje.value.trim();
+    const canal = contactForm.canal.value;
     const val = (v) => v || 'No indicado';
 
     const subject = `Nueva solicitud — ${servicio} — ${nombre}`;
@@ -853,8 +862,18 @@
       val(mensaje),
     ].join('\n');
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@cema27.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const win = window.open(gmailUrl, '_blank', 'noopener');
-    if (!win) window.location.href = `mailto:info@cema27.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:info@cema27.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (canal === 'default') {
+      window.location.href = mailtoUrl;
+      return;
+    }
+
+    const webUrl = canal === 'outlook'
+      ? `https://outlook.live.com/mail/0/deeplink/compose?to=info@cema27.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      : `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@cema27.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const win = window.open(webUrl, '_blank', 'noopener');
+    if (!win) window.location.href = mailtoUrl;
   });
 </script>
