@@ -816,7 +816,7 @@
     });
   });
 
-  // Formulario de contacto -> email prerellenado
+  // Formulario de contacto -> abre Gmail con un mensaje ya estructurado
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -826,10 +826,35 @@
     const email = contactForm.email.value.trim();
     const servicio = contactForm.servicio.value;
     const mensaje = contactForm.mensaje.value.trim();
+    const val = (v) => v || 'No indicado';
 
-    const subject = `Solicitud de presupuesto — ${servicio}`;
-    const body = `Nombre: ${nombre}\nEmpresa: ${empresa}\nTeléfono: ${telefono}\nEmail: ${email}\nServicio: ${servicio}\n\n${mensaje}`;
-    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=info@cema27.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(url, '_blank', 'noopener');
+    const subject = `Nueva solicitud — ${servicio} — ${nombre}`;
+    const line = '—————————————————————';
+    const body = [
+      'NUEVA SOLICITUD DE PRESUPUESTO',
+      'Cema27 Integral Solutions · formulario web',
+      '',
+      line,
+      'DATOS DE CONTACTO',
+      line,
+      `Nombre:    ${val(nombre)}`,
+      `Empresa:   ${val(empresa)}`,
+      `Teléfono:  ${val(telefono)}`,
+      `Email:     ${val(email)}`,
+      '',
+      line,
+      'SERVICIO SOLICITADO',
+      line,
+      servicio,
+      '',
+      line,
+      'MENSAJE',
+      line,
+      val(mensaje),
+    ].join('\n');
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@cema27.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const win = window.open(gmailUrl, '_blank', 'noopener');
+    if (!win) window.location.href = `mailto:info@cema27.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 </script>
