@@ -168,6 +168,8 @@
   .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
   .btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
   .btn-outline:hover { background: var(--navy); color: var(--white); }
+  .btn-whatsapp { background: #25D366; color: var(--white); }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(37,211,102,0.35); }
   .btn svg { width: 16px; height: 16px; }
 
   /* ---------- Header / Nav ---------- */
@@ -198,8 +200,9 @@
   .nav-links a.link:hover::after, .nav-links a.link.active::after { width: 100%; }
   .nav-links a.link.active { opacity: 1; color: var(--blue); }
 
-  .nav-cta { display: none; }
-  @media (min-width: 900px) { .nav-cta { display: inline-flex; } }
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .nav-cta, .nav-call { display: none; }
+  @media (min-width: 900px) { .nav-cta, .nav-call { display: inline-flex; } }
   .burger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
   .burger span { width: 24px; height: 2px; background: var(--white); display: block; transition: transform .25s, opacity .25s; }
   @media (min-width: 900px) { .burger { display: none; } }
@@ -414,6 +417,7 @@
   .contact-info-item .label { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
 
   .contact-form { background: var(--white); border: 1px solid var(--border-light); border-radius: 4px; padding: 40px; display: grid; gap: 20px; }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 14px; }
   .form-row-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 560px) { .form-row-2 { grid-template-columns: 1fr 1fr; } }
   .form-row label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; font-weight: 600; }
@@ -461,9 +465,16 @@
       <li><a href="#servicios" class="link">Servicios</a></li>
       <li><a href="#proyectos" class="link">Proyectos</a></li>
       <li><a href="#contacto" class="link">Contacto</a></li>
+      <li class="nav-cta-mobile"><a href="tel:+34603421166" class="btn btn-ghost">Llamar ahora</a></li>
       <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a></li>
     </ul>
-    <a href="#contacto" class="btn btn-primary nav-cta">Solicitar presupuesto</a>
+    <div class="nav-actions">
+      <a href="tel:+34603421166" class="btn btn-ghost nav-call" aria-label="Llamar a Cema27">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Llamar</span>
+      </a>
+      <a href="#contacto" class="btn btn-primary nav-cta">Solicitar presupuesto</a>
+    </div>
     <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </nav>
 </header>
@@ -711,8 +722,14 @@
               <option value="default">Mi aplicación de correo predeterminada</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-          <div class="contact-form-note">Elige con qué correo quieres enviarlo. Se abrirá con tu mensaje ya redactado, listo para enviar a info@cema27.com.</div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+            <button type="button" id="sendWhatsapp" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.36 7.56L4 20l1.02-4.46A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 10.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+              Enviar por WhatsApp
+            </button>
+          </div>
+          <div class="contact-form-note">Elige cómo enviarlo: por correo (con el desplegable de arriba) o directamente por WhatsApp.</div>
         </form>
       </div>
     </div>
@@ -824,44 +841,69 @@
     });
   });
 
-  // Formulario de contacto -> abre Gmail con un mensaje ya estructurado
+  // Formulario de contacto -> abre el canal elegido con un mensaje ya estructurado
   const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nombre = contactForm.nombre.value.trim();
-    const empresa = contactForm.empresa.value.trim();
-    const telefono = contactForm.telefono.value.trim();
-    const email = contactForm.email.value.trim();
-    const servicio = contactForm.servicio.value;
-    const mensaje = contactForm.mensaje.value.trim();
-    const canal = contactForm.canal.value;
-    const val = (v) => v || 'No indicado';
+  const val = (v) => v || 'No indicado';
 
-    const subject = `Nueva solicitud — ${servicio} — ${nombre}`;
+  function readFormData() {
+    return {
+      nombre: contactForm.nombre.value.trim(),
+      empresa: contactForm.empresa.value.trim(),
+      telefono: contactForm.telefono.value.trim(),
+      email: contactForm.email.value.trim(),
+      servicio: contactForm.servicio.value,
+      mensaje: contactForm.mensaje.value.trim(),
+    };
+  }
+
+  function buildEmailBody(d) {
     const line = '—————————————————————';
-    const body = [
+    return [
       'NUEVA SOLICITUD DE PRESUPUESTO',
       'Cema27 Integral Solutions · formulario web',
       '',
       line,
       'DATOS DE CONTACTO',
       line,
-      `Nombre:    ${val(nombre)}`,
-      `Empresa:   ${val(empresa)}`,
-      `Teléfono:  ${val(telefono)}`,
-      `Email:     ${val(email)}`,
+      `Nombre:    ${val(d.nombre)}`,
+      `Empresa:   ${val(d.empresa)}`,
+      `Teléfono:  ${val(d.telefono)}`,
+      `Email:     ${val(d.email)}`,
       '',
       line,
       'SERVICIO SOLICITADO',
       line,
-      servicio,
+      d.servicio,
       '',
       line,
       'MENSAJE',
       line,
-      val(mensaje),
+      val(d.mensaje),
     ].join('\n');
+  }
 
+  function buildWhatsappText(d) {
+    return [
+      '*Nueva solicitud de presupuesto*',
+      'Cema27 Integral Solutions',
+      '',
+      `*Nombre:* ${val(d.nombre)}`,
+      `*Empresa:* ${val(d.empresa)}`,
+      `*Teléfono:* ${val(d.telefono)}`,
+      `*Email:* ${val(d.email)}`,
+      `*Servicio:* ${d.servicio}`,
+      '',
+      '*Mensaje:*',
+      val(d.mensaje),
+    ].join('\n');
+  }
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = readFormData();
+    const canal = contactForm.canal.value;
+    const subject = `Nueva solicitud — ${d.servicio} — ${d.nombre}`;
+    const body = buildEmailBody(d);
     const mailtoUrl = `mailto:info@cema27.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     if (canal === 'default') {
@@ -875,5 +917,12 @@
 
     const win = window.open(webUrl, '_blank', 'noopener');
     if (!win) window.location.href = mailtoUrl;
+  });
+
+  document.getElementById('sendWhatsapp').addEventListener('click', () => {
+    if (!contactForm.reportValidity()) return;
+    const d = readFormData();
+    const text = buildWhatsappText(d);
+    window.open(`https://wa.me/34603421166?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
   });
 </script>
