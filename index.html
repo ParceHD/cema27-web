@@ -704,7 +704,7 @@
           </div>
           <div class="form-row"><label for="cf-mensaje">Mensaje</label><textarea id="cf-mensaje" name="mensaje" rows="4" required></textarea></div>
           <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-          <div class="contact-form-note">Se abrirá tu gestor de correo con el mensaje ya redactado, listo para enviar a info@cema27.com.</div>
+          <div class="contact-form-note">Se abrirá Gmail con tu mensaje ya redactado, listo para enviar a info@cema27.com.</div>
         </form>
       </div>
     </div>
@@ -829,7 +829,7 @@
 
     const subject = `Solicitud de presupuesto — ${servicio}`;
     const body = `Nombre: ${nombre}\nEmpresa: ${empresa}\nTeléfono: ${telefono}\nEmail: ${email}\nServicio: ${servicio}\n\n${mensaje}`;
-    const url = `mailto:info@cema27.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=info@cema27.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank', 'noopener');
   });
 </script>
