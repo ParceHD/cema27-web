@@ -363,10 +363,28 @@
 
   /* ---------- Proyectos ---------- */
   .proyectos { background: var(--bg-light); }
-  .proy-note { color: var(--gray); font-size: 0.98rem; max-width: 560px; margin-bottom: 44px; }
-  .proy-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .proy-note { color: var(--gray); font-size: 0.98rem; max-width: 620px; margin-bottom: 44px; }
+  .proy-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
   @media (min-width: 680px) { .proy-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1020px) { .proy-grid { grid-template-columns: repeat(3, 1fr); } }
+  .proy-photo {
+    border-radius: 4px; overflow: hidden; background: var(--bg-light-alt);
+    display: flex; flex-direction: column;
+  }
+  .proy-photo-frame { aspect-ratio: 4 / 3; overflow: hidden; }
+  .proy-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .proy-photo:hover .proy-photo-frame img { transform: scale(1.05); }
+  .proy-photo-body { padding: 20px 4px 4px; }
+  .proy-tag {
+    display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--navy); background: color-mix(in srgb, var(--navy) 10%, white 90%);
+    padding: 5px 10px; border-radius: 2px; margin-bottom: 12px;
+  }
+  .proy-photo-body h3 { font-size: 1.08rem; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+  .proy-photo-body p { color: var(--gray); font-size: 0.92rem; }
   .proy-card {
     border: 1px dashed var(--border-light); border-radius: 4px; min-height: 260px;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
@@ -616,11 +634,57 @@
     <div class="wrap">
       <div class="eyebrow reveal">Proyectos</div>
       <h2 class="section-title reveal reveal-1">Proyectos que hablan<br>por nuestro trabajo.</h2>
-      <p class="proy-note reveal reveal-2">Estamos documentando nuestros proyectos más recientes. Muy pronto podrás verlos aquí, con imagen, sector y servicio realizado.</p>
+      <p class="proy-note reveal reveal-2">Una muestra de trabajos reales de fabricación e instalación. Seguimos documentando proyectos — esta sección irá creciendo.</p>
       <div class="proy-grid reveal reveal-3">
-        <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
-        <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
-        <div class="proy-card"><span class="plus">+</span><span>Próximo proyecto</span></div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/mobiliario-inox.jpg" alt="Mesas auxiliares con ruedas fabricadas en acero inoxidable" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Cerrajería en inox y hierro</span>
+            <h3>Mobiliario técnico en acero inoxidable</h3>
+            <p>Fabricamos mesas y carros auxiliares en acero inoxidable, a medida y con ruedas para moverlos por planta.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/acceso-industrial.jpg" alt="Escalera y plataforma de acceso industrial en acero inoxidable" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Diseño y fabricación a medida</span>
+            <h3>Estructuras de acceso industrial</h3>
+            <p>Diseñamos y fabricamos escaleras y plataformas de acceso en acero inoxidable para líneas de producción.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/chapas-senalizacion.jpg" alt="Chapas de identificación cortadas y marcadas a medida" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Cerrajería en inox y hierro</span>
+            <h3>Chapas y señalización</h3>
+            <p>Cortamos y marcamos chapas de identificación a medida para instalaciones y equipos.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estacion-carga.jpg" alt="Instalación de estación de carga para maquinaria de almacén" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones</span>
+            <h3>Estación de carga para maquinaria</h3>
+            <p>Instalamos la estación de carga para las carretillas y transpaletas eléctricas del almacén.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estanterias-almacen.jpg" alt="Montaje de estanterías y mobiliario metálico en sala de almacén" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones</span>
+            <h3>Estanterías y sala de almacén</h3>
+            <p>Montamos estanterías y mobiliario metálico para una sala de almacenamiento.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/plataforma-depositos.jpg" alt="Pasarela y plataforma de acceso instalada sobre depósitos industriales" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones</span>
+            <h3>Plataforma sobre depósitos</h3>
+            <p>Fabricamos e instalamos una pasarela de acceso sobre depósitos industriales.</p>
+          </div>
+        </div>
+        <div class="proy-card"><span class="plus">+</span><span>Más proyectos, próximamente</span></div>
       </div>
     </div>
   </section>
