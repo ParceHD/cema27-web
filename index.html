@@ -337,7 +337,7 @@
   .serv-panel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,7,13,0.15), rgba(5,7,13,0.9)); }
   .serv-panel .big-num { position: relative; z-index: 1; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 800; color: rgba(255,255,255,0.14); line-height: 1; }
   .serv-panel[data-p="1"] { background-image: url('assets/cema27/servicios/cerrajeria.jpg'); }
-  .serv-panel[data-p="2"].placeholder { background-image: none; }
+  .serv-panel[data-p="2"] { background-image: url('assets/cema27/servicios/suministros.jpg'); }
   .serv-panel[data-p="3"] { background-image: url('assets/cema27/proyectos/acceso-industrial.jpg'); }
   .serv-panel[data-p="4"] { background-image: url('assets/cema27/servicios/instalaciones.jpg'); }
   .serv-panel[data-p="5"] { background-image: url('assets/cema27/servicios/diseno-fabricacion.jpg'); }
@@ -611,11 +611,7 @@
         </div>
         <div class="serv-visual">
           <div class="serv-panel active" data-p="1"><span class="big-num">01</span></div>
-          <div class="serv-panel placeholder" data-p="2">
-            <svg class="placeholder-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l2-4h14l2 4"/><path d="M9 12h6"/></svg>
-            <span class="placeholder-label">Fotografía próximamente</span>
-            <span class="big-num">02</span>
-          </div>
+          <div class="serv-panel" data-p="2"><span class="big-num">02</span></div>
           <div class="serv-panel" data-p="3"><span class="big-num">03</span></div>
           <div class="serv-panel" data-p="4"><span class="big-num">04</span></div>
           <div class="serv-panel" data-p="5"><span class="big-num">05</span></div>
