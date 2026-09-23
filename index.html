@@ -66,6 +66,11 @@
   }
 
   ::selection { background: var(--blue); color: var(--white); }
+  html { scrollbar-width: thin; scrollbar-color: var(--blue) var(--ink); }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--navy); }
   a { color: inherit; text-decoration: none; }
   img, svg { max-width: 100%; display: block; }
   ul { list-style: none; }
@@ -204,8 +209,8 @@
     border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 14px 24px;
   }
-  nav { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 28px; }
-  .nav-links { display: flex; gap: 38px; align-items: center; }
+  nav { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 22px; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
   .nav-links a.link {
     font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
     color: var(--white); opacity: 0.8; transition: opacity 0.2s, color 0.2s; position: relative;
@@ -218,13 +223,13 @@
   .nav-links a.link:hover::after, .nav-links a.link.active::after { width: 100%; }
   .nav-links a.link.active { opacity: 1; color: var(--blue); }
 
-  .nav-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+  .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
   .nav-cta, .nav-call { display: none; }
-  @media (min-width: 900px) { .nav-cta, .nav-call { display: inline-flex; } }
+  @media (min-width: 1240px) { .nav-cta, .nav-call { display: inline-flex; } }
   .burger { position: relative; z-index: 5; display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
   .burger span { width: 24px; height: 2px; background: var(--white); display: block; transition: transform .25s, opacity .25s; }
-  @media (min-width: 900px) { .burger { display: none; } }
-  @media (max-width: 899px) {
+  @media (min-width: 1240px) { .burger { display: none; } }
+  @media (max-width: 1239px) {
     .nav-links {
       position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 84vw);
       background: var(--ink); border-left: 1px solid var(--border-dark);
