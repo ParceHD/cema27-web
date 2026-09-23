@@ -487,6 +487,14 @@
   }
   .footer-bottom .copy { font-size: 0.8rem; color: var(--gray-light); opacity: 0.55; }
   .footer-tagline { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+  .tessen-credit-row { max-width: 1180px; margin: 18px auto 0; display: flex; justify-content: center; }
+  .tessen-credit {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--gray-light); opacity: 0.5; font-size: 0.76rem; letter-spacing: 0.02em;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .tessen-credit:hover { opacity: 0.9; color: var(--white); }
+  .tessen-credit img { width: 18px; height: 18px; object-fit: contain; }
 
   /* ---------- Utils ---------- */
   .hide-mobile { display: none; }
@@ -869,6 +877,12 @@
   <div class="footer-bottom">
     <span class="copy">© 2026 Cema27 Integral Solutions S.L. Todos los derechos reservados.</span>
     <span class="footer-tagline">Soluciones integrales. Resultados reales.</span>
+  </div>
+  <div class="tessen-credit-row">
+    <a class="tessen-credit" href="https://www.tessenconsulting.com" target="_blank" rel="noopener">
+      <img src="assets/cema27/tessen-icon.png" alt="Tessen" />
+      Hecho por Tessen
+    </a>
   </div>
 </footer>
 
