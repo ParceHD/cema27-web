@@ -186,7 +186,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 14px 24px;
   }
-  nav { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  nav { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 28px; }
   .nav-links { display: flex; gap: 38px; align-items: center; }
   .nav-links a.link {
     font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
@@ -200,7 +200,7 @@
   .nav-links a.link:hover::after, .nav-links a.link.active::after { width: 100%; }
   .nav-links a.link.active { opacity: 1; color: var(--blue); }
 
-  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .nav-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
   .nav-cta, .nav-call { display: none; }
   @media (min-width: 900px) { .nav-cta, .nav-call { display: inline-flex; } }
   .burger { position: relative; z-index: 5; display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
