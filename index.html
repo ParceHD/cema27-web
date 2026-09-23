@@ -1,10 +1,10 @@
 <title>Cema27 Integral Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />
-<meta name="description" content="Cema27 Integral Solutions S.L. — mantenimiento industrial, cerrajería en inox y hierro, diseño y fabricación a medida e instalaciones industriales en Sant Hipòlit de Voltregà, Barcelona." />
+<meta name="description" content="Cema27 Integral Solutions S.L. — trabajo en acero inoxidable, suministros, plataformas y escaleras industriales, instalaciones y diseños a medida en Sant Hipòlit de Voltregà, Barcelona. Para empresas y particulares." />
 <meta name="theme-color" content="#050810" />
 <meta property="og:title" content="Cema27 Integral Solutions — Soluciones que hacen industria" />
-<meta property="og:description" content="Diseñamos, fabricamos, instalamos y mantenemos soluciones industriales adaptadas a cada proyecto. Mantenimiento industrial, cerrajería inox y hierro, diseño a medida e instalaciones." />
+<meta property="og:description" content="Diseñamos, fabricamos, instalamos y mantenemos soluciones en acero inoxidable para empresas y particulares. Suministros, plataformas y escaleras, instalaciones y diseños a medida." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_ES" />
 <meta property="og:image" content="assets/cema27/logo-cema27.png" />
@@ -18,7 +18,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Cema27 Integral Solutions S.L.",
-  "description": "Soluciones integrales para la industria: mantenimiento industrial, cerrajería en inox y hierro, diseño y fabricación a medida e instalaciones industriales.",
+  "description": "Trabajo en acero inoxidable, suministros, plataformas y escaleras industriales, instalaciones industriales y diseños a medida, para empresas y particulares.",
   "telephone": "+34603421166",
   "email": "info@cema27.com",
   "address": {
@@ -203,7 +203,7 @@
   .nav-actions { display: flex; align-items: center; gap: 12px; }
   .nav-cta, .nav-call { display: none; }
   @media (min-width: 900px) { .nav-cta, .nav-call { display: inline-flex; } }
-  .burger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+  .burger { position: relative; z-index: 5; display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
   .burger span { width: 24px; height: 2px; background: var(--white); display: block; transition: transform .25s, opacity .25s; }
   @media (min-width: 900px) { .burger { display: none; } }
   @media (max-width: 899px) {
@@ -238,7 +238,7 @@
   }
   .hero-industrial {
     position: absolute; inset: 0;
-    background-image: url('assets/cema27/hero-industria.jpg');
+    background-image: url('assets/cema27/servicios/cerrajeria.jpg');
     background-size: cover; background-position: center;
     opacity: 0.28; mix-blend-mode: luminosity;
   }
@@ -265,7 +265,7 @@
     margin-top: 90px; display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border-dark); padding-top: 22px;
   }
-  .marquee { overflow: hidden; max-width: 420px; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  .marquee { overflow: hidden; width: min(420px, 45vw); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
   .marquee-track { display: flex; gap: 40px; white-space: nowrap; animation: marquee 16s linear infinite; }
   .marquee-track span { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gray-light); opacity: 0.6; }
   .marquee-track span b { color: var(--blue); font-weight: 700; }
@@ -336,10 +336,20 @@
   .serv-panel.active { opacity: 1; transform: scale(1); }
   .serv-panel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,7,13,0.15), rgba(5,7,13,0.9)); }
   .serv-panel .big-num { position: relative; z-index: 1; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 800; color: rgba(255,255,255,0.14); line-height: 1; }
-  .serv-panel[data-p="1"] { background-image: url('assets/cema27/servicios/mantenimiento.jpg'); }
-  .serv-panel[data-p="2"] { background-image: url('assets/cema27/servicios/cerrajeria.jpg'); }
-  .serv-panel[data-p="3"] { background-image: url('assets/cema27/servicios/diseno-fabricacion.jpg'); }
+  .serv-panel[data-p="1"] { background-image: url('assets/cema27/servicios/cerrajeria.jpg'); }
+  .serv-panel[data-p="2"].placeholder { background-image: none; }
+  .serv-panel[data-p="3"] { background-image: url('assets/cema27/proyectos/acceso-industrial.jpg'); }
   .serv-panel[data-p="4"] { background-image: url('assets/cema27/servicios/instalaciones.jpg'); }
+  .serv-panel[data-p="5"] { background-image: url('assets/cema27/servicios/diseno-fabricacion.jpg'); }
+  .serv-panel.placeholder {
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+    background-color: var(--card-dark);
+  }
+  .serv-panel.placeholder .placeholder-ic { width: 40px; height: 40px; color: rgba(255,255,255,0.35); position: relative; z-index: 1; }
+  .serv-panel.placeholder .placeholder-label {
+    position: relative; z-index: 1; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+  }
+  .serv-panel.placeholder .big-num { position: absolute; bottom: 40px; left: 40px; }
 
   /* ---------- Propuesta de valor ---------- */
   .valores { background: var(--bg-light-alt); }
@@ -441,7 +451,7 @@
   .form-row label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; font-weight: 600; }
   .form-row input, .form-row select, .form-row textarea {
     width: 100%; border: 1px solid var(--border-light); border-radius: 3px; padding: 13px 14px;
-    font-family: inherit; font-size: 0.95rem; color: var(--ink); background: var(--white);
+    font-family: inherit; font-size: 16px; color: var(--ink); background: var(--white);
     transition: border-color .2s;
   }
   .form-row input:focus, .form-row select:focus, .form-row textarea:focus { outline: none; border-color: var(--blue); }
@@ -510,7 +520,7 @@
       </div>
       <div class="hero-body">
         <h1 class="reveal">SOLUCIONES<br>QUE HACEN<br><span class="blue">INDUSTRIA</span>.</h1>
-        <p class="hero-sub reveal reveal-1">Diseñamos, fabricamos, instalamos y mantenemos soluciones industriales adaptadas a cada proyecto.</p>
+        <p class="hero-sub reveal reveal-1">Diseñamos, fabricamos, instalamos y mantenemos soluciones en acero inoxidable, para empresas y particulares.</p>
         <div class="hero-actions reveal reveal-2">
           <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
           <a href="#servicios" class="btn btn-ghost">Descubrir servicios</a>
@@ -535,7 +545,8 @@
         <div class="empresa-text">
           <div class="eyebrow reveal">Cema27 · Soluciones integrales</div>
           <h2 class="section-title reveal reveal-1">Industria, servicio<br>y resultados.</h2>
-          <p class="reveal reveal-2">En Cema27 ofrecemos soluciones integrales para la industria combinando experiencia, tecnología y compromiso. Acompañamos cada proyecto desde su planteamiento y diseño hasta la fabricación, instalación y mantenimiento.</p>
+          <p class="reveal reveal-2">En Cema27 ofrecemos soluciones integrales combinando experiencia, tecnología y compromiso. Acompañamos cada proyecto desde su planteamiento y diseño hasta la fabricación, instalación y mantenimiento.</p>
+          <p class="reveal reveal-2">Trabajamos tanto con empresas como con particulares, adaptando cada solución a la medida del proyecto.</p>
           <div class="empresa-quote reveal reveal-3">
             <p>Soluciones integrales para un futuro más <span class="blue">eficiente</span>.</p>
           </div>
@@ -557,33 +568,42 @@
   <section class="servicios" id="servicios">
     <div class="wrap">
       <div class="eyebrow reveal">Qué hacemos</div>
-      <h2 class="section-title reveal reveal-1">Cuatro áreas.<br>Un mismo compromiso.</h2>
-      <p class="section-sub reveal reveal-2">Servicios técnicos pensados para acompañar cada fase de un proyecto industrial.</p>
+      <h2 class="section-title reveal reveal-1">Nuestras áreas de trabajo.<br>Un mismo compromiso.</h2>
+      <p class="section-sub reveal reveal-2">Servicios técnicos para empresas y particulares, pensados para acompañar cada fase de un proyecto.</p>
 
       <div class="serv-layout reveal reveal-3" id="servLayout">
         <div class="serv-list">
           <div class="serv-list-item active" data-p="1">
-            <div class="serv-list-head"><span class="serv-num">01</span><span class="serv-title">Mantenimiento industrial</span></div>
-            <div class="serv-desc"><p>Mantenimiento preventivo y correctivo orientado a garantizar el rendimiento, fiabilidad y continuidad de las instalaciones.</p></div>
-          </div>
-          <div class="serv-list-item" data-p="2">
-            <div class="serv-list-head"><span class="serv-num">02</span><span class="serv-title">Cerrajería en inox y hierro</span></div>
+            <div class="serv-list-head"><span class="serv-num">01</span><span class="serv-title">Trabajo en acero inoxidable</span></div>
             <div class="serv-desc"><p>Fabricación y trabajos de cerrajería en acero inoxidable y hierro, con acabados profesionales y soluciones adaptadas a cada necesidad.</p></div>
           </div>
+          <div class="serv-list-item" data-p="2">
+            <div class="serv-list-head"><span class="serv-num">02</span><span class="serv-title">Suministros</span></div>
+            <div class="serv-desc"><p>Suministro de materiales y componentes para proyectos industriales y particulares.</p></div>
+          </div>
           <div class="serv-list-item" data-p="3">
-            <div class="serv-list-head"><span class="serv-num">03</span><span class="serv-title">Diseño y fabricación a medida</span></div>
-            <div class="serv-desc"><p>Desarrollo de soluciones personalizadas desde el diseño inicial hasta la fabricación final.</p></div>
+            <div class="serv-list-head"><span class="serv-num">03</span><span class="serv-title">Plataformas y escaleras industriales</span></div>
+            <div class="serv-desc"><p>Diseño, fabricación e instalación de plataformas y escaleras de acceso en acero inoxidable.</p></div>
           </div>
           <div class="serv-list-item" data-p="4">
-            <div class="serv-list-head"><span class="serv-num">04</span><span class="serv-title">Instalaciones</span></div>
+            <div class="serv-list-head"><span class="serv-num">04</span><span class="serv-title">Instalaciones industriales</span></div>
             <div class="serv-desc"><p>Ejecución de instalaciones industriales eficientes y profesionales adaptadas a las necesidades de cada proyecto.</p></div>
+          </div>
+          <div class="serv-list-item" data-p="5">
+            <div class="serv-list-head"><span class="serv-num">05</span><span class="serv-title">Diseños a medida y mejora productiva</span></div>
+            <div class="serv-desc"><p>Desarrollo de soluciones personalizadas, desde el diseño inicial hasta la fabricación final, orientadas a mejorar el proceso productivo.</p></div>
           </div>
         </div>
         <div class="serv-visual">
           <div class="serv-panel active" data-p="1"><span class="big-num">01</span></div>
-          <div class="serv-panel" data-p="2"><span class="big-num">02</span></div>
+          <div class="serv-panel placeholder" data-p="2">
+            <svg class="placeholder-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l2-4h14l2 4"/><path d="M9 12h6"/></svg>
+            <span class="placeholder-label">Fotografía próximamente</span>
+            <span class="big-num">02</span>
+          </div>
           <div class="serv-panel" data-p="3"><span class="big-num">03</span></div>
           <div class="serv-panel" data-p="4"><span class="big-num">04</span></div>
+          <div class="serv-panel" data-p="5"><span class="big-num">05</span></div>
         </div>
       </div>
     </div>
@@ -639,7 +659,7 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/mobiliario-inox.jpg" alt="Mesas auxiliares con ruedas fabricadas en acero inoxidable" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Cerrajería en inox y hierro</span>
+            <span class="proy-tag">Trabajo en acero inoxidable</span>
             <h3>Mobiliario técnico en acero inoxidable</h3>
             <p>Fabricamos mesas y carros auxiliares en acero inoxidable, a medida y con ruedas para moverlos por planta.</p>
           </div>
@@ -647,7 +667,7 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/acceso-industrial.jpg" alt="Escalera y plataforma de acceso industrial en acero inoxidable" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Diseño y fabricación a medida</span>
+            <span class="proy-tag">Diseños a medida y mejora productiva</span>
             <h3>Estructuras de acceso industrial</h3>
             <p>Diseñamos y fabricamos escaleras y plataformas de acceso en acero inoxidable para líneas de producción.</p>
           </div>
@@ -655,7 +675,7 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/chapas-senalizacion.jpg" alt="Chapas de identificación cortadas y marcadas a medida" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Cerrajería en inox y hierro</span>
+            <span class="proy-tag">Trabajo en acero inoxidable</span>
             <h3>Chapas y señalización</h3>
             <p>Cortamos y marcamos chapas de identificación a medida para instalaciones y equipos.</p>
           </div>
@@ -663,7 +683,7 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estacion-carga.jpg" alt="Instalación de estación de carga para maquinaria de almacén" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones</span>
+            <span class="proy-tag">Instalaciones industriales</span>
             <h3>Estación de carga para maquinaria</h3>
             <p>Instalamos la estación de carga para las carretillas y transpaletas eléctricas del almacén.</p>
           </div>
@@ -671,7 +691,7 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estanterias-almacen.jpg" alt="Montaje de estanterías y mobiliario metálico en sala de almacén" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones</span>
+            <span class="proy-tag">Instalaciones industriales</span>
             <h3>Estanterías y sala de almacén</h3>
             <p>Montamos estanterías y mobiliario metálico para una sala de almacenamiento.</p>
           </div>
@@ -679,49 +699,12 @@
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/plataforma-depositos.jpg" alt="Pasarela y plataforma de acceso instalada sobre depósitos industriales" loading="lazy" /></div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones</span>
+            <span class="proy-tag">Instalaciones industriales</span>
             <h3>Plataforma sobre depósitos</h3>
             <p>Fabricamos e instalamos una pasarela de acceso sobre depósitos industriales.</p>
           </div>
         </div>
         <div class="proy-card"><span class="plus">+</span><span>Más proyectos, próximamente</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EMPRESAS COLABORADORAS ==========
-       Logos y nombres de ejemplo (inventados) para mostrar el formato de la sección.
-       Sustituir por las empresas reales de Cema27 antes de publicar. -->
-  <section class="colaboradores">
-    <div class="wrap">
-      <div class="eyebrow reveal">Colaboraciones</div>
-      <h2 class="section-title reveal reveal-1">Empresas con las<br>que colaboramos.</h2>
-      <p class="section-sub reveal reveal-2">Ejemplo ilustrativo — se sustituirá por las empresas reales.</p>
-      <div class="collab-grid reveal reveal-3">
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l8 5v10l-8 5-8-5V7l8-5z"/></svg>
-          <span>Norvex Industrial</span>
-        </div>
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg>
-          <span>Acerplus</span>
-        </div>
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l5-5 4 4 9-9M21 7h-5v5"/></svg>
-          <span>Metaltech Group</span>
-        </div>
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l9 16H3L12 3z"/></svg>
-          <span>Ferrocom</span>
-        </div>
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
-          <span>Industrias Vallès</span>
-        </div>
-        <div class="collab-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="14" width="4" height="7"/><rect x="10" y="9" width="4" height="12"/><rect x="17" y="4" width="4" height="17"/></svg>
-          <span>Steelcore Systems</span>
-        </div>
       </div>
     </div>
   </section>
@@ -770,10 +753,11 @@
           <div class="form-row">
             <label for="cf-servicio">Servicio</label>
             <select id="cf-servicio" name="servicio">
-              <option>Mantenimiento industrial</option>
-              <option>Cerrajería en inox y hierro</option>
-              <option>Diseño y fabricación a medida</option>
-              <option>Instalaciones</option>
+              <option>Trabajo en acero inoxidable</option>
+              <option>Suministros</option>
+              <option>Plataformas y escaleras industriales</option>
+              <option>Instalaciones industriales</option>
+              <option>Diseños a medida y mejora productiva</option>
               <option>Otro</option>
             </select>
           </div>
@@ -807,7 +791,7 @@
       <div class="logo-lockup">
         <span class="logo-mark"><img src="assets/cema27/logo-cema27.png" alt="Cema27 Integral Solutions" /></span>
       </div>
-      <p>Soluciones integrales para la industria: mantenimiento, cerrajería, diseño, fabricación e instalaciones.</p>
+      <p>Soluciones integrales en acero inoxidable, suministros, instalaciones y diseño a medida, para empresas y particulares.</p>
     </div>
     <div class="footer-col">
       <h4>Enlaces</h4>
@@ -822,10 +806,11 @@
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="#servicios">Mantenimiento industrial</a></li>
-        <li><a href="#servicios">Cerrajería inox y hierro</a></li>
-        <li><a href="#servicios">Diseño y fabricación a medida</a></li>
-        <li><a href="#servicios">Instalaciones</a></li>
+        <li><a href="#servicios">Trabajo en acero inoxidable</a></li>
+        <li><a href="#servicios">Suministros</a></li>
+        <li><a href="#servicios">Plataformas y escaleras industriales</a></li>
+        <li><a href="#servicios">Instalaciones industriales</a></li>
+        <li><a href="#servicios">Diseños a medida y mejora productiva</a></li>
       </ul>
     </div>
     <div class="footer-col">
