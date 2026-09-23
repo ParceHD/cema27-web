@@ -390,12 +390,16 @@
     display: flex; flex-direction: column;
   }
   @media (min-width: 640px) { .proy-photo { flex-basis: 320px; } }
-  .proy-photo-frame { aspect-ratio: 4 / 3; overflow: hidden; }
-  .proy-photo-frame img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: transform 0.5s ease;
+  .proy-photo-frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .proy-photo-frame img.gimg {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+    opacity: 0; transition: opacity 0.9s ease, transform 0.5s ease;
   }
-  .proy-photo:hover .proy-photo-frame img { transform: scale(1.05); }
+  .proy-photo-frame img.gimg.active { opacity: 1; }
+  .proy-photo:hover .proy-photo-frame img.gimg.active { transform: scale(1.05); }
+  .proy-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; gap: 6px; }
+  .proy-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: background .3s ease; }
+  .proy-dots span.active { background: var(--white); }
   .proy-photo-body { padding: 20px 4px 4px; }
   .proy-tag {
     display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
@@ -669,7 +673,9 @@
       <div class="proy-carousel reveal reveal-3">
         <div class="proy-track" id="proyTrack">
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/mobiliario-inox.jpg" alt="Mesas auxiliares con ruedas fabricadas en acero inoxidable" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/mobiliario-inox.jpg" alt="Mesas auxiliares con ruedas fabricadas en acero inoxidable" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Trabajo en acero inoxidable</span>
             <h3>Mobiliario técnico en acero inoxidable</h3>
@@ -677,7 +683,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/acceso-industrial.jpg" alt="Escalera y plataforma de acceso industrial en acero inoxidable" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/acceso-industrial.jpg" alt="Escalera y plataforma de acceso industrial en acero inoxidable" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Diseños a medida y mejora productiva</span>
             <h3>Estructuras de acceso industrial</h3>
@@ -685,7 +693,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/chapas-senalizacion.jpg" alt="Chapas de identificación cortadas y marcadas a medida" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/chapas-senalizacion.jpg" alt="Chapas de identificación cortadas y marcadas a medida" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Trabajo en acero inoxidable</span>
             <h3>Chapas y señalización</h3>
@@ -693,7 +703,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estacion-carga.jpg" alt="Instalación de estación de carga para maquinaria de almacén" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/estacion-carga.jpg" alt="Instalación de estación de carga para maquinaria de almacén" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Estación de carga para maquinaria</h3>
@@ -701,7 +713,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/estanterias-almacen.jpg" alt="Montaje de estanterías y mobiliario metálico en sala de almacén" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/estanterias-almacen.jpg" alt="Montaje de estanterías y mobiliario metálico en sala de almacén" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Estanterías y sala de almacén</h3>
@@ -709,7 +723,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/plataforma-depositos.jpg" alt="Pasarela y plataforma de acceso instalada sobre depósitos industriales" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/plataforma-depositos.jpg" alt="Pasarela y plataforma de acceso instalada sobre depósitos industriales" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Plataforma sobre depósitos</h3>
@@ -717,39 +733,33 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/sala-tecnica-tuberias-1.jpg" alt="Instalación de tuberías y depósitos en sala técnica de tratamiento de agua" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/sala-tecnica-tuberias-1.jpg" alt="Instalación de tuberías y depósitos en sala técnica de tratamiento de agua" loading="lazy" />
+            <img class="gimg" src="assets/cema27/proyectos/sala-tecnica-tuberias-2.jpg" alt="Red de tuberías en acero inoxidable con válvulas en sala técnica" loading="lazy" />
+            <div class="proy-dots"><span class="active"></span><span></span></div>
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Sala técnica de filtración</h3>
-            <p>Instalamos la red de tuberías y los depósitos de una sala técnica de tratamiento de agua.</p>
+            <p>Red de tuberías y depósitos en acero inoxidable instalados en una sala técnica de tratamiento de agua.</p>
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/sala-tecnica-tuberias-2.jpg" alt="Red de tuberías en acero inoxidable con válvulas en sala técnica" loading="lazy" /></div>
-          <div class="proy-photo-body">
-            <span class="proy-tag">Trabajo en acero inoxidable</span>
-            <h3>Red de tuberías en sala técnica</h3>
-            <p>Conducciones en acero inoxidable con válvulas de corte para la misma sala técnica.</p>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/cuba-inox-cerrada.jpg" alt="Cuba industrial en acero inoxidable con puerta de acceso" loading="lazy" />
+            <img class="gimg" src="assets/cema27/proyectos/cuba-inox-panel-control.jpg" alt="Cuba industrial con puerta abierta y panel de control" loading="lazy" />
+            <div class="proy-dots"><span class="active"></span><span></span></div>
           </div>
-        </div>
-        <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/cuba-inox-cerrada.jpg" alt="Cuba industrial en acero inoxidable con puerta de acceso" loading="lazy" /></div>
           <div class="proy-photo-body">
             <span class="proy-tag">Trabajo en acero inoxidable</span>
             <h3>Cuba industrial en acero inoxidable</h3>
-            <p>Fabricamos una cuba de proceso en acero inoxidable con puerta de acceso abatible.</p>
+            <p>Fabricamos una cuba de proceso con puerta de acceso abatible y su cuadro de control integrado.</p>
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/cuba-inox-panel-control.jpg" alt="Cuba industrial con puerta abierta y panel de control" loading="lazy" /></div>
-          <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Cuba con panel de control</h3>
-            <p>La misma cuba con su puerta de inspección abierta y el cuadro de control integrado.</p>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/conducciones-valvulas.jpg" alt="Conducciones aisladas y válvulas de corte en sala de máquinas" loading="lazy" />
           </div>
-        </div>
-        <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/conducciones-valvulas.jpg" alt="Conducciones aisladas y válvulas de corte en sala de máquinas" loading="lazy" /></div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Conducciones y válvulas de corte</h3>
@@ -757,7 +767,9 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/grupo-bombeo.jpg" alt="Grupo de bombeo industrial con vaso de expansión" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/grupo-bombeo.jpg" alt="Grupo de bombeo industrial con vaso de expansión" loading="lazy" />
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Grupo de bombeo</h3>
@@ -765,23 +777,21 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/linea-automatizacion-1.jpg" alt="Estructura de perfil de aluminio para línea transportadora automatizada" loading="lazy" /></div>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/linea-automatizacion-1.jpg" alt="Estructura de perfil de aluminio para línea transportadora automatizada" loading="lazy" />
+            <img class="gimg" src="assets/cema27/proyectos/linea-automatizacion-2.jpg" alt="Vista general de línea transportadora automatizada" loading="lazy" />
+            <div class="proy-dots"><span class="active"></span><span></span></div>
+          </div>
           <div class="proy-photo-body">
             <span class="proy-tag">Diseños a medida y mejora productiva</span>
             <h3>Línea de automatización a medida</h3>
-            <p>Estructura de perfil de aluminio para una línea transportadora automatizada.</p>
+            <p>Estructura de perfil de aluminio para una línea transportadora automatizada, ya montada.</p>
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/linea-automatizacion-2.jpg" alt="Vista general de línea transportadora automatizada" loading="lazy" /></div>
-          <div class="proy-photo-body">
-            <span class="proy-tag">Diseños a medida y mejora productiva</span>
-            <h3>Línea de automatización a medida</h3>
-            <p>Vista general de la misma línea, con los tramos transportadores ya montados.</p>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/tuberia-hdpe.jpg" alt="Instalación de tubería de polietileno para conducción de agua" loading="lazy" />
           </div>
-        </div>
-        <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/tuberia-hdpe.jpg" alt="Instalación de tubería de polietileno para conducción de agua" loading="lazy" /></div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
             <h3>Tubería de conducción en PEAD</h3>
@@ -789,19 +799,15 @@
           </div>
         </div>
         <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/control-depuradora-cerrado.jpg" alt="Armarios de protección para equipos de medición junto a canal de tratamiento" loading="lazy" /></div>
-          <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Armarios de control en depuradora</h3>
-            <p>Cajas de protección para los equipos de medición instalados junto al canal de tratamiento.</p>
+          <div class="proy-photo-frame">
+            <img class="gimg active" src="assets/cema27/proyectos/control-depuradora-cerrado.jpg" alt="Armarios de protección para equipos de medición junto a canal de tratamiento" loading="lazy" />
+            <img class="gimg" src="assets/cema27/proyectos/control-depuradora-abierto.jpg" alt="Instrumentación de control abierta junto a canal de tratamiento de agua" loading="lazy" />
+            <div class="proy-dots"><span class="active"></span><span></span></div>
           </div>
-        </div>
-        <div class="proy-photo">
-          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/control-depuradora-abierto.jpg" alt="Instrumentación de control abierta junto a canal de tratamiento de agua" loading="lazy" /></div>
           <div class="proy-photo-body">
             <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Instrumentación de control</h3>
-            <p>Equipos de medición y control instalados dentro de los armarios de protección.</p>
+            <h3>Control de depuradora</h3>
+            <p>Armarios de protección e instrumentación de medición instalados junto a un canal de tratamiento.</p>
           </div>
         </div>
         <div class="proy-card"><span class="plus">+</span><span>Más proyectos, próximamente</span></div>
@@ -989,6 +995,21 @@
       const panel = document.querySelector('.serv-panel[data-p="' + p + '"]');
       if (panel) panel.classList.add('active');
     });
+  });
+
+  // Proyectos: mini-galería dentro de cada tarjeta con varias fotos
+  document.querySelectorAll('.proy-photo-frame').forEach(frame => {
+    const imgs = frame.querySelectorAll('img.gimg');
+    if (imgs.length < 2) return;
+    const dots = frame.querySelectorAll('.proy-dots span');
+    let i = 0;
+    setInterval(() => {
+      imgs[i].classList.remove('active');
+      dots[i] && dots[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+      dots[i] && dots[i].classList.add('active');
+    }, 2600 + Math.random() * 400);
   });
 
   // Proyectos: carrusel con avance automático
