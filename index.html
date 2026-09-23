@@ -374,13 +374,22 @@
   /* ---------- Proyectos ---------- */
   .proyectos { background: var(--bg-light); }
   .proy-note { color: var(--gray); font-size: 0.98rem; max-width: 620px; margin-bottom: 44px; }
-  .proy-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-  @media (min-width: 680px) { .proy-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1020px) { .proy-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .proy-carousel { position: relative; margin: 0 -24px; padding: 0 24px; }
+  .proy-track {
+    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x proximity; scroll-behavior: smooth;
+    padding-bottom: 18px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: var(--border-light) transparent;
+  }
+  .proy-track::-webkit-scrollbar { height: 6px; }
+  .proy-track::-webkit-scrollbar-track { background: transparent; }
+  .proy-track::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
   .proy-photo {
+    flex: 0 0 280px; scroll-snap-align: start;
     border-radius: 4px; overflow: hidden; background: var(--bg-light-alt);
     display: flex; flex-direction: column;
   }
+  @media (min-width: 640px) { .proy-photo { flex-basis: 320px; } }
   .proy-photo-frame { aspect-ratio: 4 / 3; overflow: hidden; }
   .proy-photo-frame img {
     width: 100%; height: 100%; object-fit: cover; display: block;
@@ -396,11 +405,13 @@
   .proy-photo-body h3 { font-size: 1.08rem; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
   .proy-photo-body p { color: var(--gray); font-size: 0.92rem; }
   .proy-card {
+    flex: 0 0 280px; scroll-snap-align: start;
     border: 1px dashed var(--border-light); border-radius: 4px; min-height: 260px;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
     padding: 30px; text-align: center; color: var(--gray); background: var(--bg-light-alt);
     transition: border-color .3s ease;
   }
+  @media (min-width: 640px) { .proy-card { flex-basis: 320px; } }
   .proy-card:hover { border-color: var(--blue); }
   .proy-card .plus { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gray-light); display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 1.1rem; }
   .proy-card span { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -655,7 +666,8 @@
       <div class="eyebrow reveal">Proyectos</div>
       <h2 class="section-title reveal reveal-1">Proyectos que hablan<br>por nuestro trabajo.</h2>
       <p class="proy-note reveal reveal-2">Una muestra de trabajos reales de fabricación e instalación. Seguimos documentando proyectos — esta sección irá creciendo.</p>
-      <div class="proy-grid reveal reveal-3">
+      <div class="proy-carousel reveal reveal-3">
+        <div class="proy-track" id="proyTrack">
         <div class="proy-photo">
           <div class="proy-photo-frame"><img src="assets/cema27/proyectos/mobiliario-inox.jpg" alt="Mesas auxiliares con ruedas fabricadas en acero inoxidable" loading="lazy" /></div>
           <div class="proy-photo-body">
@@ -704,7 +716,96 @@
             <p>Fabricamos e instalamos una pasarela de acceso sobre depósitos industriales.</p>
           </div>
         </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/sala-tecnica-tuberias-1.jpg" alt="Instalación de tuberías y depósitos en sala técnica de tratamiento de agua" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Sala técnica de filtración</h3>
+            <p>Instalamos la red de tuberías y los depósitos de una sala técnica de tratamiento de agua.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/sala-tecnica-tuberias-2.jpg" alt="Red de tuberías en acero inoxidable con válvulas en sala técnica" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Trabajo en acero inoxidable</span>
+            <h3>Red de tuberías en sala técnica</h3>
+            <p>Conducciones en acero inoxidable con válvulas de corte para la misma sala técnica.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/cuba-inox-cerrada.jpg" alt="Cuba industrial en acero inoxidable con puerta de acceso" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Trabajo en acero inoxidable</span>
+            <h3>Cuba industrial en acero inoxidable</h3>
+            <p>Fabricamos una cuba de proceso en acero inoxidable con puerta de acceso abatible.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/cuba-inox-panel-control.jpg" alt="Cuba industrial con puerta abierta y panel de control" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Cuba con panel de control</h3>
+            <p>La misma cuba con su puerta de inspección abierta y el cuadro de control integrado.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/conducciones-valvulas.jpg" alt="Conducciones aisladas y válvulas de corte en sala de máquinas" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Conducciones y válvulas de corte</h3>
+            <p>Instalación de conducciones aisladas y válvulas de corte en sala de máquinas.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/grupo-bombeo.jpg" alt="Grupo de bombeo industrial con vaso de expansión" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Grupo de bombeo</h3>
+            <p>Montaje de un grupo de bombeo con vaso de expansión y conexiones a la instalación.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/linea-automatizacion-1.jpg" alt="Estructura de perfil de aluminio para línea transportadora automatizada" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Diseños a medida y mejora productiva</span>
+            <h3>Línea de automatización a medida</h3>
+            <p>Estructura de perfil de aluminio para una línea transportadora automatizada.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/linea-automatizacion-2.jpg" alt="Vista general de línea transportadora automatizada" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Diseños a medida y mejora productiva</span>
+            <h3>Línea de automatización a medida</h3>
+            <p>Vista general de la misma línea, con los tramos transportadores ya montados.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/tuberia-hdpe.jpg" alt="Instalación de tubería de polietileno para conducción de agua" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Tubería de conducción en PEAD</h3>
+            <p>Instalación de tubería de polietileno para conducción de agua, conectada a la red existente.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/control-depuradora-cerrado.jpg" alt="Armarios de protección para equipos de medición junto a canal de tratamiento" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Armarios de control en depuradora</h3>
+            <p>Cajas de protección para los equipos de medición instalados junto al canal de tratamiento.</p>
+          </div>
+        </div>
+        <div class="proy-photo">
+          <div class="proy-photo-frame"><img src="assets/cema27/proyectos/control-depuradora-abierto.jpg" alt="Instrumentación de control abierta junto a canal de tratamiento de agua" loading="lazy" /></div>
+          <div class="proy-photo-body">
+            <span class="proy-tag">Instalaciones industriales</span>
+            <h3>Instrumentación de control</h3>
+            <p>Equipos de medición y control instalados dentro de los armarios de protección.</p>
+          </div>
+        </div>
         <div class="proy-card"><span class="plus">+</span><span>Más proyectos, próximamente</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -889,6 +990,32 @@
       if (panel) panel.classList.add('active');
     });
   });
+
+  // Proyectos: carrusel con avance automático
+  const proyTrack = document.getElementById('proyTrack');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (proyTrack && !reducedMotion) {
+    let proyTimer;
+    const proyStep = () => {
+      const card = proyTrack.querySelector('.proy-photo, .proy-card');
+      if (!card) return;
+      const gap = 24;
+      const distance = card.getBoundingClientRect().width + gap;
+      const atEnd = proyTrack.scrollLeft + proyTrack.clientWidth >= proyTrack.scrollWidth - 4;
+      if (atEnd) {
+        proyTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        proyTrack.scrollBy({ left: distance, behavior: 'smooth' });
+      }
+    };
+    const startProy = () => { proyTimer = setInterval(proyStep, 3800); };
+    const stopProy = () => clearInterval(proyTimer);
+    startProy();
+    proyTrack.addEventListener('mouseenter', stopProy);
+    proyTrack.addEventListener('mouseleave', startProy);
+    proyTrack.addEventListener('touchstart', stopProy, { passive: true });
+    proyTrack.addEventListener('touchend', () => { stopProy(); setTimeout(startProy, 4500); }, { passive: true });
+  }
 
   // Formulario de contacto -> abre el canal elegido con un mensaje ya estructurado
   const contactForm = document.getElementById('contactForm');
