@@ -137,6 +137,24 @@
   }
   .corner-tag::before { content: "// "; color: var(--blue); }
 
+  /* ---------- Selector de idioma ---------- */
+  .lang-switch {
+    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    padding: 6px 10px; border: 1px solid rgba(255,255,255,0.25); border-radius: 20px;
+  }
+  .lang-btn {
+    background: none; border: none; cursor: pointer; color: var(--gray-light);
+    font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; opacity: 0.6; padding: 2px 3px; transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn:hover { opacity: 0.9; }
+  .lang-btn.active { color: var(--blue); opacity: 1; }
+  .lang-sep { color: var(--gray-light); opacity: 0.4; font-size: 0.7rem; }
+  @media (max-width: 480px) {
+    .lang-switch { padding: 5px 8px; gap: 4px; }
+    .lang-btn { font-size: 0.66rem; }
+  }
+
   /* ---------- Logo ---------- */
   .logo-lockup { display: flex; align-items: center; flex-shrink: 0; }
   .logo-mark { height: 66px; flex-shrink: 0; transition: height 0.3s ease; }
@@ -507,26 +525,31 @@
 
 <header id="siteHeader">
   <nav>
+    <div class="lang-switch" role="group" aria-label="Selector de idioma">
+      <button type="button" class="lang-btn active" id="langEs" data-lang="es">ES</button>
+      <span class="lang-sep">/</span>
+      <button type="button" class="lang-btn" id="langCa" data-lang="ca">CA</button>
+    </div>
     <a href="#inicio" class="logo-lockup" aria-label="Cema27 — Inicio">
       <span class="logo-mark"><img src="assets/cema27/logo-cema27.png" alt="Cema27 Integral Solutions" /></span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio" class="link">Inicio</a></li>
-      <li><a href="#empresa" class="link">Empresa</a></li>
-      <li><a href="#servicios" class="link">Servicios</a></li>
-      <li><a href="#proyectos" class="link">Proyectos</a></li>
-      <li><a href="#contacto" class="link">Contacto</a></li>
-      <li class="nav-cta-mobile"><a href="tel:+34603421166" class="btn btn-ghost">Llamar ahora</a></li>
-      <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a></li>
+      <li><a href="#inicio" class="link" data-i18n="nav_inicio">Inicio</a></li>
+      <li><a href="#empresa" class="link" data-i18n="nav_empresa">Empresa</a></li>
+      <li><a href="#servicios" class="link" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="#proyectos" class="link" data-i18n="nav_proyectos">Proyectos</a></li>
+      <li><a href="#contacto" class="link" data-i18n="nav_contacto">Contacto</a></li>
+      <li class="nav-cta-mobile"><a href="tel:+34603421166" class="btn btn-ghost" data-i18n="btn_llamar_ahora">Llamar ahora</a></li>
+      <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary" data-i18n="btn_presupuesto">Solicitar presupuesto</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="tel:+34603421166" class="btn btn-ghost nav-call" aria-label="Llamar a Cema27">
+      <a href="tel:+34603421166" class="btn btn-ghost nav-call" aria-label="Llamar a Cema27" data-i18n-aria="aria_llamar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>Llamar</span>
+        <span data-i18n="btn_llamar">Llamar</span>
       </a>
-      <a href="#contacto" class="btn btn-primary nav-cta">Solicitar presupuesto</a>
+      <a href="#contacto" class="btn btn-primary nav-cta" data-i18n="btn_presupuesto">Solicitar presupuesto</a>
     </div>
-    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Abrir menú" data-i18n-aria="aria_abrir_menu"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
@@ -542,18 +565,18 @@
         <span class="corner-tag hide-tablet">SANT HIPÒLIT DE VOLTREGÀ · BARCELONA</span>
       </div>
       <div class="hero-body">
-        <h1 class="reveal">SOLUCIONES<br>QUE HACEN<br><span class="blue">INDUSTRIA</span>.</h1>
-        <p class="hero-sub reveal reveal-1">Diseñamos, fabricamos, instalamos y mantenemos soluciones en acero inoxidable, para empresas y particulares.</p>
+        <h1 class="reveal" data-i18n="hero_h1">SOLUCIONES<br>QUE HACEN<br><span class="blue">INDUSTRIA</span>.</h1>
+        <p class="hero-sub reveal reveal-1" data-i18n="hero_sub">Diseñamos, fabricamos, instalamos y mantenemos soluciones en acero inoxidable, para empresas y particulares.</p>
         <div class="hero-actions reveal reveal-2">
-          <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
-          <a href="#servicios" class="btn btn-ghost">Descubrir servicios</a>
+          <a href="#contacto" class="btn btn-primary" data-i18n="btn_presupuesto">Solicitar presupuesto</a>
+          <a href="#servicios" class="btn btn-ghost" data-i18n="btn_descubrir_servicios">Descubrir servicios</a>
         </div>
       </div>
       <div class="hero-foot reveal reveal-3">
         <div class="marquee">
           <div class="marquee-track">
-            <span><b>INDUSTRIA</b> — SERVICIO — RESULTADOS —</span>
-            <span><b>INDUSTRIA</b> — SERVICIO — RESULTADOS —</span>
+            <span data-i18n="marquee"><b>INDUSTRIA</b> — SERVICIO — RESULTADOS —</span>
+            <span data-i18n="marquee"><b>INDUSTRIA</b> — SERVICIO — RESULTADOS —</span>
           </div>
         </div>
         <div class="scroll-cue"><span class="dot"></span> Scroll</div>
@@ -566,21 +589,21 @@
     <div class="wrap">
       <div class="empresa-grid">
         <div class="empresa-text">
-          <div class="eyebrow reveal">Cema27 · Soluciones integrales</div>
-          <h2 class="section-title reveal reveal-1">Industria, servicio<br>y resultados.</h2>
-          <p class="reveal reveal-2">En Cema27 ofrecemos soluciones integrales combinando experiencia, tecnología y compromiso. Acompañamos cada proyecto desde su planteamiento y diseño hasta la fabricación, instalación y mantenimiento.</p>
-          <p class="reveal reveal-2">Trabajamos tanto con empresas como con particulares, adaptando cada solución a la medida del proyecto.</p>
+          <div class="eyebrow reveal" data-i18n="empresa_eyebrow">Cema27 · Soluciones integrales</div>
+          <h2 class="section-title reveal reveal-1" data-i18n="empresa_title">Industria, servicio<br>y resultados.</h2>
+          <p class="reveal reveal-2" data-i18n="empresa_p1">En Cema27 ofrecemos soluciones integrales combinando experiencia, tecnología y compromiso. Acompañamos cada proyecto desde su planteamiento y diseño hasta la fabricación, instalación y mantenimiento.</p>
+          <p class="reveal reveal-2" data-i18n="empresa_p2">Trabajamos tanto con empresas como con particulares, adaptando cada solución a la medida del proyecto.</p>
           <div class="empresa-quote reveal reveal-3">
-            <p>Soluciones integrales para un futuro más <span class="blue">eficiente</span>.</p>
+            <p data-i18n="empresa_quote">Soluciones integrales para un futuro más <span class="blue">eficiente</span>.</p>
           </div>
         </div>
         <div class="concept-panel reveal reveal-2">
           <div class="grid-bg" style="mask-image:none;-webkit-mask-image:none;opacity:.5;"></div>
-          <div class="concept-row"><span class="num">01</span><span class="label">Industria</span></div>
+          <div class="concept-row"><span class="num">01</span><span class="label" data-i18n="concept_industria">Industria</span></div>
           <div class="concept-plus">+</div>
-          <div class="concept-row"><span class="num">02</span><span class="label">Servicio</span></div>
+          <div class="concept-row"><span class="num">02</span><span class="label" data-i18n="concept_servicio">Servicio</span></div>
           <div class="concept-plus">+</div>
-          <div class="concept-row"><span class="num">03</span><span class="label">Resultados</span></div>
+          <div class="concept-row"><span class="num">03</span><span class="label" data-i18n="concept_resultados">Resultados</span></div>
           <div class="concept-row result concept-eq"><span class="num">=</span><span class="label">CEMA27</span></div>
         </div>
       </div>
@@ -590,31 +613,31 @@
   <!-- ========== SERVICIOS ========== -->
   <section class="servicios" id="servicios">
     <div class="wrap">
-      <div class="eyebrow reveal">Qué hacemos</div>
-      <h2 class="section-title reveal reveal-1">Nuestras áreas de trabajo.<br>Un mismo compromiso.</h2>
-      <p class="section-sub reveal reveal-2">Servicios técnicos para empresas y particulares, pensados para acompañar cada fase de un proyecto.</p>
+      <div class="eyebrow reveal" data-i18n="serv_eyebrow">Qué hacemos</div>
+      <h2 class="section-title reveal reveal-1" data-i18n="serv_title">Nuestras áreas de trabajo.<br>Un mismo compromiso.</h2>
+      <p class="section-sub reveal reveal-2" data-i18n="serv_sub">Servicios técnicos para empresas y particulares, pensados para acompañar cada fase de un proyecto.</p>
 
       <div class="serv-layout reveal reveal-3" id="servLayout">
         <div class="serv-list">
           <div class="serv-list-item active" data-p="1" tabindex="0" role="button" aria-pressed="true">
-            <div class="serv-list-head"><span class="serv-num">01</span><span class="serv-title">Trabajo en acero inoxidable</span></div>
-            <div class="serv-desc"><p>Fabricación y trabajos de cerrajería en acero inoxidable y hierro, con acabados profesionales y soluciones adaptadas a cada necesidad.</p></div>
+            <div class="serv-list-head"><span class="serv-num">01</span><span class="serv-title" data-i18n="serv1_title">Trabajo en acero inoxidable</span></div>
+            <div class="serv-desc"><p data-i18n="serv1_desc">Fabricación y trabajos de cerrajería en acero inoxidable y hierro, con acabados profesionales y soluciones adaptadas a cada necesidad.</p></div>
           </div>
           <div class="serv-list-item" data-p="2" tabindex="0" role="button" aria-pressed="false">
-            <div class="serv-list-head"><span class="serv-num">02</span><span class="serv-title">Suministros</span></div>
-            <div class="serv-desc"><p>Suministro de materiales y componentes para proyectos industriales y particulares.</p></div>
+            <div class="serv-list-head"><span class="serv-num">02</span><span class="serv-title" data-i18n="serv2_title">Suministros</span></div>
+            <div class="serv-desc"><p data-i18n="serv2_desc">Suministro de materiales y componentes para proyectos industriales y particulares.</p></div>
           </div>
           <div class="serv-list-item" data-p="3" tabindex="0" role="button" aria-pressed="false">
-            <div class="serv-list-head"><span class="serv-num">03</span><span class="serv-title">Plataformas y escaleras industriales</span></div>
-            <div class="serv-desc"><p>Diseño, fabricación e instalación de plataformas y escaleras de acceso en acero inoxidable.</p></div>
+            <div class="serv-list-head"><span class="serv-num">03</span><span class="serv-title" data-i18n="serv3_title">Plataformas y escaleras industriales</span></div>
+            <div class="serv-desc"><p data-i18n="serv3_desc">Diseño, fabricación e instalación de plataformas y escaleras de acceso en acero inoxidable.</p></div>
           </div>
           <div class="serv-list-item" data-p="4" tabindex="0" role="button" aria-pressed="false">
-            <div class="serv-list-head"><span class="serv-num">04</span><span class="serv-title">Instalaciones industriales</span></div>
-            <div class="serv-desc"><p>Ejecución de instalaciones industriales eficientes y profesionales adaptadas a las necesidades de cada proyecto.</p></div>
+            <div class="serv-list-head"><span class="serv-num">04</span><span class="serv-title" data-i18n="serv4_title">Instalaciones industriales</span></div>
+            <div class="serv-desc"><p data-i18n="serv4_desc">Ejecución de instalaciones industriales eficientes y profesionales adaptadas a las necesidades de cada proyecto.</p></div>
           </div>
           <div class="serv-list-item" data-p="5" tabindex="0" role="button" aria-pressed="false">
-            <div class="serv-list-head"><span class="serv-num">05</span><span class="serv-title">Diseños a medida y mejora productiva</span></div>
-            <div class="serv-desc"><p>Desarrollo de soluciones personalizadas, desde el diseño inicial hasta la fabricación final, orientadas a mejorar el proceso productivo.</p></div>
+            <div class="serv-list-head"><span class="serv-num">05</span><span class="serv-title" data-i18n="serv5_title">Diseños a medida y mejora productiva</span></div>
+            <div class="serv-desc"><p data-i18n="serv5_desc">Desarrollo de soluciones personalizadas, desde el diseño inicial hasta la fabricación final, orientadas a mejorar el proceso productivo.</p></div>
           </div>
         </div>
         <div class="serv-visual">
@@ -631,23 +654,23 @@
   <!-- ========== PROPUESTA DE VALOR ========== -->
   <section class="valores">
     <div class="wrap">
-      <div class="eyebrow reveal">Por qué Cema27</div>
-      <h2 class="section-title reveal reveal-1">Calidad, compromiso<br>y profesionalidad.</h2>
+      <div class="eyebrow reveal" data-i18n="valores_eyebrow">Por qué Cema27</div>
+      <h2 class="section-title reveal reveal-1" data-i18n="valores_title">Calidad, compromiso<br>y profesionalidad.</h2>
       <div class="valores-grid reveal reveal-2">
         <div class="valor-card">
           <svg class="valor-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-          <h3>Calidad</h3>
-          <p>Trabajamos buscando altos estándares en cada proyecto.</p>
+          <h3 data-i18n="valor1_h3">Calidad</h3>
+          <p data-i18n="valor1_p">Trabajamos buscando altos estándares en cada proyecto.</p>
         </div>
         <div class="valor-card">
           <svg class="valor-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 12l3 3 5-6"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/><circle cx="12" cy="12" r="9"/></svg>
-          <h3>Compromiso</h3>
-          <p>Cumplimos nuestros compromisos y acompañamos al cliente durante todo el proceso.</p>
+          <h3 data-i18n="valor2_h3">Compromiso</h3>
+          <p data-i18n="valor2_p">Cumplimos nuestros compromisos y acompañamos al cliente durante todo el proceso.</p>
         </div>
         <div class="valor-card">
           <svg class="valor-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 20V10"/></svg>
-          <h3>Profesionalidad</h3>
-          <p>Experiencia, conocimiento técnico y atención personalizada.</p>
+          <h3 data-i18n="valor3_h3">Profesionalidad</h3>
+          <p data-i18n="valor3_p">Experiencia, conocimiento técnico y atención personalizada.</p>
         </div>
       </div>
     </div>
@@ -656,14 +679,14 @@
   <!-- ========== PROCESO ========== -->
   <section class="proceso">
     <div class="wrap">
-      <div class="eyebrow reveal">Cómo trabajamos</div>
-      <h2 class="section-title reveal reveal-1">De la idea<br>a la instalación.</h2>
+      <div class="eyebrow reveal" data-i18n="proceso_eyebrow">Cómo trabajamos</div>
+      <h2 class="section-title reveal reveal-1" data-i18n="proceso_title">De la idea<br>a la instalación.</h2>
       <div class="proceso-track">
-        <div class="proceso-step reveal"><span class="proceso-num">01</span><h3>Análisis</h3><p>Estudiamos las necesidades del proyecto.</p></div>
-        <div class="proceso-step reveal reveal-1"><span class="proceso-num">02</span><h3>Diseño</h3><p>Planteamos la solución técnica.</p></div>
-        <div class="proceso-step reveal reveal-2"><span class="proceso-num">03</span><h3>Fabricación</h3><p>Producimos con precisión y calidad.</p></div>
-        <div class="proceso-step reveal reveal-3"><span class="proceso-num">04</span><h3>Instalación</h3><p>Ejecutamos la instalación en obra.</p></div>
-        <div class="proceso-step reveal reveal-4"><span class="proceso-num">05</span><h3>Mantenimiento</h3><p>Acompañamos la instalación en el tiempo.</p></div>
+        <div class="proceso-step reveal"><span class="proceso-num">01</span><h3 data-i18n="proceso1_h3">Análisis</h3><p data-i18n="proceso1_p">Estudiamos las necesidades del proyecto.</p></div>
+        <div class="proceso-step reveal reveal-1"><span class="proceso-num">02</span><h3 data-i18n="proceso2_h3">Diseño</h3><p data-i18n="proceso2_p">Planteamos la solución técnica.</p></div>
+        <div class="proceso-step reveal reveal-2"><span class="proceso-num">03</span><h3 data-i18n="proceso3_h3">Fabricación</h3><p data-i18n="proceso3_p">Producimos con precisión y calidad.</p></div>
+        <div class="proceso-step reveal reveal-3"><span class="proceso-num">04</span><h3 data-i18n="proceso4_h3">Instalación</h3><p data-i18n="proceso4_p">Ejecutamos la instalación en obra.</p></div>
+        <div class="proceso-step reveal reveal-4"><span class="proceso-num">05</span><h3 data-i18n="proceso5_h3">Mantenimiento</h3><p data-i18n="proceso5_p">Acompañamos la instalación en el tiempo.</p></div>
       </div>
     </div>
   </section>
@@ -671,9 +694,9 @@
   <!-- ========== PROYECTOS ========== -->
   <section class="proyectos" id="proyectos">
     <div class="wrap">
-      <div class="eyebrow reveal">Proyectos</div>
-      <h2 class="section-title reveal reveal-1">Proyectos que hablan<br>por nuestro trabajo.</h2>
-      <p class="proy-note reveal reveal-2">Una muestra de trabajos reales de fabricación e instalación. Seguimos documentando proyectos — esta sección irá creciendo.</p>
+      <div class="eyebrow reveal" data-i18n="proy_eyebrow">Proyectos</div>
+      <h2 class="section-title reveal reveal-1" data-i18n="proy_title">Proyectos que hablan<br>por nuestro trabajo.</h2>
+      <p class="proy-note reveal reveal-2" data-i18n="proy_note">Una muestra de trabajos reales de fabricación e instalación. Seguimos documentando proyectos — esta sección irá creciendo.</p>
       <div class="proy-carousel reveal reveal-3">
         <div class="proy-track" id="proyTrack">
         <div class="proy-photo">
@@ -684,9 +707,9 @@
             <div class="proy-dots"><span class="active"></span><span></span><span></span></div>
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Trabajo en acero inoxidable</span>
-            <h3>Mobiliario técnico en acero inoxidable</h3>
-            <p>Fabricamos mesas, carros y cubas de proceso en acero inoxidable, a medida para cada instalación.</p>
+            <span class="proy-tag" data-i18n="serv1_title">Trabajo en acero inoxidable</span>
+            <h3 data-i18n="proy1_h3">Mobiliario técnico en acero inoxidable</h3>
+            <p data-i18n="proy1_p">Fabricamos mesas, carros y cubas de proceso en acero inoxidable, a medida para cada instalación.</p>
           </div>
         </div>
         <div class="proy-photo">
@@ -697,9 +720,9 @@
             <div class="proy-dots"><span class="active"></span><span></span><span></span></div>
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Diseños a medida y mejora productiva</span>
-            <h3>Estructuras de acceso industrial</h3>
-            <p>Diseñamos y fabricamos escaleras, plataformas y estructuras a medida para líneas de producción.</p>
+            <span class="proy-tag" data-i18n="serv5_title">Diseños a medida y mejora productiva</span>
+            <h3 data-i18n="proy2_h3">Estructuras de acceso industrial</h3>
+            <p data-i18n="proy2_p">Diseñamos y fabricamos escaleras, plataformas y estructuras a medida para líneas de producción.</p>
           </div>
         </div>
         <div class="proy-photo">
@@ -707,9 +730,9 @@
             <img class="gimg active" src="assets/cema27/proyectos/chapas-senalizacion.jpg" alt="Chapas de identificación cortadas y marcadas a medida" loading="lazy" />
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Trabajo en acero inoxidable</span>
-            <h3>Chapas y señalización</h3>
-            <p>Cortamos y marcamos chapas de identificación a medida para instalaciones y equipos.</p>
+            <span class="proy-tag" data-i18n="serv1_title">Trabajo en acero inoxidable</span>
+            <h3 data-i18n="proy3_h3">Chapas y señalización</h3>
+            <p data-i18n="proy3_p">Cortamos y marcamos chapas de identificación a medida para instalaciones y equipos.</p>
           </div>
         </div>
         <div class="proy-photo">
@@ -720,9 +743,9 @@
             <div class="proy-dots"><span class="active"></span><span></span><span></span></div>
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Estación de carga para maquinaria</h3>
-            <p>Instalaciones eléctricas y de conducciones para maquinaria de almacén y sala de máquinas.</p>
+            <span class="proy-tag" data-i18n="serv4_title">Instalaciones industriales</span>
+            <h3 data-i18n="proy4_h3">Estación de carga para maquinaria</h3>
+            <p data-i18n="proy4_p">Instalaciones eléctricas y de conducciones para maquinaria de almacén y sala de máquinas.</p>
           </div>
         </div>
         <div class="proy-photo">
@@ -733,9 +756,9 @@
             <div class="proy-dots"><span class="active"></span><span></span><span></span></div>
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Estanterías y sala de almacén</h3>
-            <p>Montamos estanterías, mobiliario metálico y armarios técnicos para salas de almacén y control.</p>
+            <span class="proy-tag" data-i18n="serv4_title">Instalaciones industriales</span>
+            <h3 data-i18n="proy5_h3">Estanterías y sala de almacén</h3>
+            <p data-i18n="proy5_p">Montamos estanterías, mobiliario metálico y armarios técnicos para salas de almacén y control.</p>
           </div>
         </div>
         <div class="proy-photo">
@@ -747,12 +770,12 @@
             <div class="proy-dots"><span class="active"></span><span></span><span></span><span></span></div>
           </div>
           <div class="proy-photo-body">
-            <span class="proy-tag">Instalaciones industriales</span>
-            <h3>Plataforma sobre depósitos</h3>
-            <p>Fabricamos e instalamos pasarelas, tuberías y depósitos para plantas de tratamiento de agua.</p>
+            <span class="proy-tag" data-i18n="serv4_title">Instalaciones industriales</span>
+            <h3 data-i18n="proy6_h3">Plataforma sobre depósitos</h3>
+            <p data-i18n="proy6_p">Fabricamos e instalamos pasarelas, tuberías y depósitos para plantas de tratamiento de agua.</p>
           </div>
         </div>
-        <div class="proy-card"><span class="plus">+</span><span>Más proyectos, próximamente</span></div>
+        <div class="proy-card"><span class="plus">+</span><span data-i18n="proy_mas">Más proyectos, próximamente</span></div>
         </div>
       </div>
     </div>
@@ -761,72 +784,72 @@
   <!-- ========== CTA ========== -->
   <section class="cta-block">
     <div class="grid-bg" style="mix-blend-mode:overlay;"></div>
-    <h2 class="reveal">¿TIENES UN PROYECTO?<br><span class="blue">HABLEMOS.</span></h2>
-    <p class="reveal reveal-1">Cuéntanos qué necesitas y estudiaremos la mejor solución para tu proyecto.</p>
-    <a href="#contacto" class="btn btn-primary reveal reveal-2">Solicitar presupuesto</a>
+    <h2 class="reveal" data-i18n="cta_h2">¿TIENES UN PROYECTO?<br><span class="blue">HABLEMOS.</span></h2>
+    <p class="reveal reveal-1" data-i18n="cta_p">Cuéntanos qué necesitas y estudiaremos la mejor solución para tu proyecto.</p>
+    <a href="#contacto" class="btn btn-primary reveal reveal-2" data-i18n="btn_presupuesto">Solicitar presupuesto</a>
   </section>
 
   <!-- ========== CONTACTO ========== -->
   <section class="contacto" id="contacto">
     <div class="wrap">
-      <div class="eyebrow reveal">Contacto</div>
-      <h2 class="section-title reveal reveal-1">Hablemos de<br>tu proyecto.</h2>
+      <div class="eyebrow reveal" data-i18n="contacto_eyebrow">Contacto</div>
+      <h2 class="section-title reveal reveal-1" data-i18n="contacto_title">Hablemos de<br>tu proyecto.</h2>
 
       <div class="contacto-grid">
         <div class="contact-info reveal reveal-2">
           <div class="contact-info-list">
             <div class="contact-info-item">
               <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span><span class="label">Teléfono</span><a href="tel:+34603421166">603 421 166</a></span>
+              <span><span class="label" data-i18n="label_telefono">Teléfono</span><a href="tel:+34603421166">603 421 166</a></span>
             </div>
             <div class="contact-info-item">
               <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
-              <span><span class="label">Email</span><a href="mailto:info@cema27.com">info@cema27.com</a></span>
+              <span><span class="label" data-i18n="label_email">Email</span><a href="mailto:info@cema27.com">info@cema27.com</a></span>
             </div>
             <div class="contact-info-item">
               <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span><span class="label">Ubicación</span><a href="https://www.google.com/maps/search/?api=1&query=Sant+Hip%C3%B2lit+de+Voltreg%C3%A0%2C+Barcelona%2C+Espa%C3%B1a" target="_blank" rel="noopener">Sant Hipòlit de Voltregà, Barcelona</a></span>
+              <span><span class="label" data-i18n="label_ubicacion">Ubicación</span><a href="https://www.google.com/maps/search/?api=1&query=Sant+Hip%C3%B2lit+de+Voltreg%C3%A0%2C+Barcelona%2C+Espa%C3%B1a" target="_blank" rel="noopener">Sant Hipòlit de Voltregà, Barcelona</a></span>
             </div>
           </div>
         </div>
 
         <form class="contact-form reveal reveal-3" id="contactForm">
           <div class="form-row-2">
-            <div class="form-row"><label for="cf-nombre">Nombre</label><input id="cf-nombre" name="nombre" type="text" required /></div>
-            <div class="form-row"><label for="cf-empresa">Empresa</label><input id="cf-empresa" name="empresa" type="text" /></div>
+            <div class="form-row"><label for="cf-nombre" data-i18n="label_nombre">Nombre</label><input id="cf-nombre" name="nombre" type="text" required /></div>
+            <div class="form-row"><label for="cf-empresa" data-i18n="label_empresa">Empresa</label><input id="cf-empresa" name="empresa" type="text" /></div>
           </div>
           <div class="form-row-2">
-            <div class="form-row"><label for="cf-telefono">Teléfono</label><input id="cf-telefono" name="telefono" type="tel" /></div>
-            <div class="form-row"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required /></div>
+            <div class="form-row"><label for="cf-telefono" data-i18n="label_telefono">Teléfono</label><input id="cf-telefono" name="telefono" type="tel" /></div>
+            <div class="form-row"><label for="cf-email" data-i18n="label_email">Email</label><input id="cf-email" name="email" type="email" required /></div>
           </div>
           <div class="form-row">
-            <label for="cf-servicio">Servicio</label>
+            <label for="cf-servicio" data-i18n="label_servicio">Servicio</label>
             <select id="cf-servicio" name="servicio">
-              <option>Trabajo en acero inoxidable</option>
-              <option>Suministros</option>
-              <option>Plataformas y escaleras industriales</option>
-              <option>Instalaciones industriales</option>
-              <option>Diseños a medida y mejora productiva</option>
-              <option>Otro</option>
+              <option data-i18n="serv1_title">Trabajo en acero inoxidable</option>
+              <option data-i18n="serv2_title">Suministros</option>
+              <option data-i18n="serv3_title">Plataformas y escaleras industriales</option>
+              <option data-i18n="serv4_title">Instalaciones industriales</option>
+              <option data-i18n="serv5_title">Diseños a medida y mejora productiva</option>
+              <option data-i18n="opt_otro">Otro</option>
             </select>
           </div>
-          <div class="form-row"><label for="cf-mensaje">Mensaje</label><textarea id="cf-mensaje" name="mensaje" rows="4" required></textarea></div>
+          <div class="form-row"><label for="cf-mensaje" data-i18n="label_mensaje">Mensaje</label><textarea id="cf-mensaje" name="mensaje" rows="4" required></textarea></div>
           <div class="form-row">
-            <label for="cf-canal">Enviar con</label>
+            <label for="cf-canal" data-i18n="label_canal">Enviar con</label>
             <select id="cf-canal" name="canal">
               <option value="gmail">Gmail</option>
               <option value="outlook">Outlook</option>
-              <option value="default">Mi aplicación de correo predeterminada</option>
+              <option value="default" data-i18n="opt_default_mail">Mi aplicación de correo predeterminada</option>
             </select>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+            <button type="submit" class="btn btn-primary" data-i18n="btn_enviar_solicitud">Enviar solicitud</button>
             <button type="button" id="sendWhatsapp" class="btn btn-whatsapp">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.36 7.56L4 20l1.02-4.46A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 10.5c0 3 2.5 5.5 5.5 5.5"/></svg>
-              Enviar por WhatsApp
+              <span data-i18n="btn_enviar_whatsapp">Enviar por WhatsApp</span>
             </button>
           </div>
-          <div class="contact-form-note">Elige cómo enviarlo: por correo (con el desplegable de arriba) o directamente por WhatsApp.</div>
+          <div class="contact-form-note" data-i18n="contact_form_note">Elige cómo enviarlo: por correo (con el desplegable de arriba) o directamente por WhatsApp.</div>
         </form>
       </div>
     </div>
@@ -840,48 +863,48 @@
       <div class="logo-lockup">
         <span class="logo-mark"><img src="assets/cema27/logo-cema27.png" alt="Cema27 Integral Solutions" /></span>
       </div>
-      <p>Soluciones integrales en acero inoxidable, suministros, instalaciones y diseño a medida, para empresas y particulares.</p>
+      <p data-i18n="footer_brand_p">Soluciones integrales en acero inoxidable, suministros, instalaciones y diseño a medida, para empresas y particulares.</p>
     </div>
     <div class="footer-col">
-      <h4>Enlaces</h4>
+      <h4 data-i18n="footer_enlaces">Enlaces</h4>
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#empresa">Empresa</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#inicio" data-i18n="nav_inicio">Inicio</a></li>
+        <li><a href="#empresa" data-i18n="nav_empresa">Empresa</a></li>
+        <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#proyectos" data-i18n="nav_proyectos">Proyectos</a></li>
+        <li><a href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Servicios</h4>
+      <h4 data-i18n="nav_servicios">Servicios</h4>
       <ul>
-        <li><a href="#servicios">Trabajo en acero inoxidable</a></li>
-        <li><a href="#servicios">Suministros</a></li>
-        <li><a href="#servicios">Plataformas y escaleras industriales</a></li>
-        <li><a href="#servicios">Instalaciones industriales</a></li>
-        <li><a href="#servicios">Diseños a medida y mejora productiva</a></li>
+        <li><a href="#servicios" data-i18n="serv1_title">Trabajo en acero inoxidable</a></li>
+        <li><a href="#servicios" data-i18n="serv2_title">Suministros</a></li>
+        <li><a href="#servicios" data-i18n="serv3_title">Plataformas y escaleras industriales</a></li>
+        <li><a href="#servicios" data-i18n="serv4_title">Instalaciones industriales</a></li>
+        <li><a href="#servicios" data-i18n="serv5_title">Diseños a medida y mejora productiva</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Contacto</h4>
+      <h4 data-i18n="nav_contacto">Contacto</h4>
       <ul>
         <li><a href="tel:+34603421166">603 421 166</a></li>
         <li><a href="mailto:info@cema27.com">info@cema27.com</a></li>
         <li><a href="#contacto">Sant Hipòlit de Voltregà, Barcelona</a></li>
-        <li><a href="legal/aviso-legal.html">Aviso legal</a></li>
-        <li><a href="legal/politica-privacidad.html">Política de privacidad</a></li>
-        <li><a href="legal/politica-cookies.html">Política de cookies</a></li>
+        <li><a href="legal/aviso-legal.html" data-i18n="footer_aviso_legal">Aviso legal</a></li>
+        <li><a href="legal/politica-privacidad.html" data-i18n="footer_politica_privacidad">Política de privacidad</a></li>
+        <li><a href="legal/politica-cookies.html" data-i18n="footer_politica_cookies">Política de cookies</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="copy">© 2026 Cema27 Integral Solutions S.L. Todos los derechos reservados.</span>
-    <span class="footer-tagline">Soluciones integrales. Resultados reales.</span>
+    <span class="copy" data-i18n="footer_copy">© 2026 Cema27 Integral Solutions S.L. Todos los derechos reservados.</span>
+    <span class="footer-tagline" data-i18n="footer_tagline">Soluciones integrales. Resultados reales.</span>
   </div>
   <div class="tessen-credit-row">
     <a class="tessen-credit" href="https://www.tessenconsulting.com" target="_blank" rel="noopener">
       <img src="assets/cema27/tessen-icon.png" alt="Tessen" />
-      Hecho por Tessen
+      <span data-i18n="footer_tessen">Hecho por Tessen</span>
     </a>
   </div>
 </footer>
@@ -1078,4 +1101,137 @@
     const text = buildWhatsappText(d);
     window.open(`https://wa.me/34603421166?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
   });
+
+  // ---------- Selector de idioma (ES / CA) ----------
+  const translations = {
+    nav_inicio: { es: 'Inicio', ca: 'Inici' },
+    nav_empresa: { es: 'Empresa', ca: 'Empresa' },
+    nav_servicios: { es: 'Servicios', ca: 'Serveis' },
+    nav_proyectos: { es: 'Proyectos', ca: 'Projectes' },
+    nav_contacto: { es: 'Contacto', ca: 'Contacte' },
+    btn_llamar_ahora: { es: 'Llamar ahora', ca: 'Truca ara' },
+    btn_presupuesto: { es: 'Solicitar presupuesto', ca: 'Sol·licitar pressupost' },
+    aria_llamar: { es: 'Llamar a Cema27', ca: 'Trucar a Cema27' },
+    btn_llamar: { es: 'Llamar', ca: 'Truca' },
+    aria_abrir_menu: { es: 'Abrir menú', ca: 'Obrir menú' },
+    hero_h1: { es: 'SOLUCIONES<br>QUE HACEN<br><span class="blue">INDUSTRIA</span>.', ca: 'SOLUCIONS<br>QUE FAN<br><span class="blue">INDÚSTRIA</span>.' },
+    hero_sub: { es: 'Diseñamos, fabricamos, instalamos y mantenemos soluciones en acero inoxidable, para empresas y particulares.', ca: 'Dissenyem, fabriquem, instal·lem i mantenim solucions en acer inoxidable, per a empreses i particulars.' },
+    btn_descubrir_servicios: { es: 'Descubrir servicios', ca: 'Descobrir serveis' },
+    marquee: { es: '<b>INDUSTRIA</b> — SERVICIO — RESULTADOS —', ca: '<b>INDÚSTRIA</b> — SERVEI — RESULTATS —' },
+    empresa_eyebrow: { es: 'Cema27 · Soluciones integrales', ca: 'Cema27 · Solucions integrals' },
+    empresa_title: { es: 'Industria, servicio<br>y resultados.', ca: 'Indústria, servei<br>i resultats.' },
+    empresa_p1: { es: 'En Cema27 ofrecemos soluciones integrales combinando experiencia, tecnología y compromiso. Acompañamos cada proyecto desde su planteamiento y diseño hasta la fabricación, instalación y mantenimiento.', ca: 'A Cema27 oferim solucions integrals combinant experiència, tecnologia i compromís. Acompanyem cada projecte des del seu plantejament i disseny fins a la fabricació, instal·lació i manteniment.' },
+    empresa_p2: { es: 'Trabajamos tanto con empresas como con particulares, adaptando cada solución a la medida del proyecto.', ca: 'Treballem tant amb empreses com amb particulars, adaptant cada solució a la mida del projecte.' },
+    empresa_quote: { es: 'Soluciones integrales para un futuro más <span class="blue">eficiente</span>.', ca: 'Solucions integrals per a un futur més <span class="blue">eficient</span>.' },
+    concept_industria: { es: 'Industria', ca: 'Indústria' },
+    concept_servicio: { es: 'Servicio', ca: 'Servei' },
+    concept_resultados: { es: 'Resultados', ca: 'Resultats' },
+    serv_eyebrow: { es: 'Qué hacemos', ca: 'Què fem' },
+    serv_title: { es: 'Nuestras áreas de trabajo.<br>Un mismo compromiso.', ca: 'Les nostres àrees de treball.<br>Un mateix compromís.' },
+    serv_sub: { es: 'Servicios técnicos para empresas y particulares, pensados para acompañar cada fase de un proyecto.', ca: 'Serveis tècnics per a empreses i particulars, pensats per acompanyar cada fase d\'un projecte.' },
+    serv1_title: { es: 'Trabajo en acero inoxidable', ca: 'Treball en acer inoxidable' },
+    serv1_desc: { es: 'Fabricación y trabajos de cerrajería en acero inoxidable y hierro, con acabados profesionales y soluciones adaptadas a cada necesidad.', ca: 'Fabricació i treballs de serralleria en acer inoxidable i ferro, amb acabats professionals i solucions adaptades a cada necessitat.' },
+    serv2_title: { es: 'Suministros', ca: 'Subministraments' },
+    serv2_desc: { es: 'Suministro de materiales y componentes para proyectos industriales y particulares.', ca: 'Subministrament de materials i components per a projectes industrials i particulars.' },
+    serv3_title: { es: 'Plataformas y escaleras industriales', ca: 'Plataformes i escales industrials' },
+    serv3_desc: { es: 'Diseño, fabricación e instalación de plataformas y escaleras de acceso en acero inoxidable.', ca: 'Disseny, fabricació i instal·lació de plataformes i escales d\'accés en acer inoxidable.' },
+    serv4_title: { es: 'Instalaciones industriales', ca: 'Instal·lacions industrials' },
+    serv4_desc: { es: 'Ejecución de instalaciones industriales eficientes y profesionales adaptadas a las necesidades de cada proyecto.', ca: 'Execució d\'instal·lacions industrials eficients i professionals adaptades a les necessitats de cada projecte.' },
+    serv5_title: { es: 'Diseños a medida y mejora productiva', ca: 'Dissenys a mida i millora productiva' },
+    serv5_desc: { es: 'Desarrollo de soluciones personalizadas, desde el diseño inicial hasta la fabricación final, orientadas a mejorar el proceso productivo.', ca: 'Desenvolupament de solucions personalitzades, des del disseny inicial fins a la fabricació final, orientades a millorar el procés productiu.' },
+    valores_eyebrow: { es: 'Por qué Cema27', ca: 'Per què Cema27' },
+    valores_title: { es: 'Calidad, compromiso<br>y profesionalidad.', ca: 'Qualitat, compromís<br>i professionalitat.' },
+    valor1_h3: { es: 'Calidad', ca: 'Qualitat' },
+    valor1_p: { es: 'Trabajamos buscando altos estándares en cada proyecto.', ca: 'Treballem buscant alts estàndards en cada projecte.' },
+    valor2_h3: { es: 'Compromiso', ca: 'Compromís' },
+    valor2_p: { es: 'Cumplimos nuestros compromisos y acompañamos al cliente durante todo el proceso.', ca: 'Complim els nostres compromisos i acompanyem el client durant tot el procés.' },
+    valor3_h3: { es: 'Profesionalidad', ca: 'Professionalitat' },
+    valor3_p: { es: 'Experiencia, conocimiento técnico y atención personalizada.', ca: 'Experiència, coneixement tècnic i atenció personalitzada.' },
+    proceso_eyebrow: { es: 'Cómo trabajamos', ca: 'Com treballem' },
+    proceso_title: { es: 'De la idea<br>a la instalación.', ca: 'De la idea<br>a la instal·lació.' },
+    proceso1_h3: { es: 'Análisis', ca: 'Anàlisi' },
+    proceso1_p: { es: 'Estudiamos las necesidades del proyecto.', ca: 'Estudiem les necessitats del projecte.' },
+    proceso2_h3: { es: 'Diseño', ca: 'Disseny' },
+    proceso2_p: { es: 'Planteamos la solución técnica.', ca: 'Plantegem la solució tècnica.' },
+    proceso3_h3: { es: 'Fabricación', ca: 'Fabricació' },
+    proceso3_p: { es: 'Producimos con precisión y calidad.', ca: 'Produïm amb precisió i qualitat.' },
+    proceso4_h3: { es: 'Instalación', ca: 'Instal·lació' },
+    proceso4_p: { es: 'Ejecutamos la instalación en obra.', ca: 'Executem la instal·lació en obra.' },
+    proceso5_h3: { es: 'Mantenimiento', ca: 'Manteniment' },
+    proceso5_p: { es: 'Acompañamos la instalación en el tiempo.', ca: 'Acompanyem la instal·lació en el temps.' },
+    proy_eyebrow: { es: 'Proyectos', ca: 'Projectes' },
+    proy_title: { es: 'Proyectos que hablan<br>por nuestro trabajo.', ca: 'Projectes que parlen<br>per la nostra feina.' },
+    proy_note: { es: 'Una muestra de trabajos reales de fabricación e instalación. Seguimos documentando proyectos — esta sección irá creciendo.', ca: 'Una mostra de treballs reals de fabricació i instal·lació. Seguim documentant projectes — aquesta secció anirà creixent.' },
+    proy1_h3: { es: 'Mobiliario técnico en acero inoxidable', ca: 'Mobiliari tècnic en acer inoxidable' },
+    proy1_p: { es: 'Fabricamos mesas, carros y cubas de proceso en acero inoxidable, a medida para cada instalación.', ca: 'Fabriquem taules, carros i cubes de procés en acer inoxidable, a mida per a cada instal·lació.' },
+    proy2_h3: { es: 'Estructuras de acceso industrial', ca: 'Estructures d\'accés industrial' },
+    proy2_p: { es: 'Diseñamos y fabricamos escaleras, plataformas y estructuras a medida para líneas de producción.', ca: 'Dissenyem i fabriquem escales, plataformes i estructures a mida per a línies de producció.' },
+    proy3_h3: { es: 'Chapas y señalización', ca: 'Xapes i senyalització' },
+    proy3_p: { es: 'Cortamos y marcamos chapas de identificación a medida para instalaciones y equipos.', ca: 'Tallem i marquem xapes d\'identificació a mida per a instal·lacions i equips.' },
+    proy4_h3: { es: 'Estación de carga para maquinaria', ca: 'Estació de càrrega per a maquinària' },
+    proy4_p: { es: 'Instalaciones eléctricas y de conducciones para maquinaria de almacén y sala de máquinas.', ca: 'Instal·lacions elèctriques i de conduccions per a maquinària de magatzem i sala de màquines.' },
+    proy5_h3: { es: 'Estanterías y sala de almacén', ca: 'Prestatgeries i sala de magatzem' },
+    proy5_p: { es: 'Montamos estanterías, mobiliario metálico y armarios técnicos para salas de almacén y control.', ca: 'Muntem prestatgeries, mobiliari metàl·lic i armaris tècnics per a sales de magatzem i control.' },
+    proy6_h3: { es: 'Plataforma sobre depósitos', ca: 'Plataforma sobre dipòsits' },
+    proy6_p: { es: 'Fabricamos e instalamos pasarelas, tuberías y depósitos para plantas de tratamiento de agua.', ca: 'Fabriquem i instal·lem passarel·les, canonades i dipòsits per a plantes de tractament d\'aigua.' },
+    proy_mas: { es: 'Más proyectos, próximamente', ca: 'Més projectes, properament' },
+    cta_h2: { es: '¿TIENES UN PROYECTO?<br><span class="blue">HABLEMOS.</span>', ca: 'TENS UN PROJECTE?<br><span class="blue">PARLEM-NE.</span>' },
+    cta_p: { es: 'Cuéntanos qué necesitas y estudiaremos la mejor solución para tu proyecto.', ca: 'Explica\'ns què necessites i estudiarem la millor solució per al teu projecte.' },
+    contacto_eyebrow: { es: 'Contacto', ca: 'Contacte' },
+    contacto_title: { es: 'Hablemos de<br>tu proyecto.', ca: 'Parlem del<br>teu projecte.' },
+    label_telefono: { es: 'Teléfono', ca: 'Telèfon' },
+    label_email: { es: 'Email', ca: 'Email' },
+    label_ubicacion: { es: 'Ubicación', ca: 'Ubicació' },
+    label_nombre: { es: 'Nombre', ca: 'Nom' },
+    label_empresa: { es: 'Empresa', ca: 'Empresa' },
+    label_servicio: { es: 'Servicio', ca: 'Servei' },
+    label_mensaje: { es: 'Mensaje', ca: 'Missatge' },
+    label_canal: { es: 'Enviar con', ca: 'Enviar amb' },
+    opt_otro: { es: 'Otro', ca: 'Altre' },
+    opt_default_mail: { es: 'Mi aplicación de correo predeterminada', ca: 'La meva aplicació de correu predeterminada' },
+    btn_enviar_solicitud: { es: 'Enviar solicitud', ca: 'Enviar sol·licitud' },
+    btn_enviar_whatsapp: { es: 'Enviar por WhatsApp', ca: 'Enviar per WhatsApp' },
+    contact_form_note: { es: 'Elige cómo enviarlo: por correo (con el desplegable de arriba) o directamente por WhatsApp.', ca: 'Tria com enviar-ho: per correu (amb el desplegable de dalt) o directament per WhatsApp.' },
+    footer_brand_p: { es: 'Soluciones integrales en acero inoxidable, suministros, instalaciones y diseño a medida, para empresas y particulares.', ca: 'Solucions integrals en acer inoxidable, subministraments, instal·lacions i disseny a mida, per a empreses i particulars.' },
+    footer_enlaces: { es: 'Enlaces', ca: 'Enllaços' },
+    footer_aviso_legal: { es: 'Aviso legal', ca: 'Avís legal' },
+    footer_politica_privacidad: { es: 'Política de privacidad', ca: 'Política de privacitat' },
+    footer_politica_cookies: { es: 'Política de cookies', ca: 'Política de cookies' },
+    footer_copy: { es: '© 2026 Cema27 Integral Solutions S.L. Todos los derechos reservados.', ca: '© 2026 Cema27 Integral Solutions S.L. Tots els drets reservats.' },
+    footer_tagline: { es: 'Soluciones integrales. Resultados reales.', ca: 'Solucions integrals. Resultats reals.' },
+    footer_tessen: { es: 'Hecho por Tessen', ca: 'Fet per Tessen' },
+  };
+
+  const metaTitle = { es: 'Cema27 Integral Solutions', ca: 'Cema27 Integral Solutions' };
+  const metaDesc = {
+    es: 'Cema27 Integral Solutions S.L. — trabajo en acero inoxidable, suministros, plataformas y escaleras industriales, instalaciones y diseños a medida en Sant Hipòlit de Voltregà, Barcelona. Para empresas y particulares.',
+    ca: 'Cema27 Integral Solutions S.L. — treball en acer inoxidable, subministraments, plataformes i escales industrials, instal·lacions i dissenys a mida a Sant Hipòlit de Voltregà, Barcelona. Per a empreses i particulars.',
+  };
+
+  const langBtns = document.querySelectorAll('.lang-btn');
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const entry = translations[el.getAttribute('data-i18n')];
+      if (entry) el.innerHTML = entry[lang];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const entry = translations[el.getAttribute('data-i18n-aria')];
+      if (entry) el.setAttribute('aria-label', entry[lang]);
+    });
+    const titleEl = document.querySelector('title');
+    if (titleEl) titleEl.textContent = metaTitle[lang];
+    const descEl = document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', metaDesc[lang]);
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('cema27_lang', lang); } catch (e) {}
+  }
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  let savedLang = 'es';
+  try { savedLang = localStorage.getItem('cema27_lang') || 'es'; } catch (e) {}
+  if (savedLang === 'ca') applyLang('ca');
 </script>
