@@ -974,32 +974,6 @@
     }, 2600 + Math.random() * 400);
   });
 
-  // Proyectos: carrusel con avance automático
-  const proyTrack = document.getElementById('proyTrack');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (proyTrack && !reducedMotion) {
-    let proyTimer;
-    const proyStep = () => {
-      const card = proyTrack.querySelector('.proy-photo, .proy-card');
-      if (!card) return;
-      const gap = 24;
-      const distance = card.getBoundingClientRect().width + gap;
-      const atEnd = proyTrack.scrollLeft + proyTrack.clientWidth >= proyTrack.scrollWidth - 4;
-      if (atEnd) {
-        proyTrack.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        proyTrack.scrollBy({ left: distance, behavior: 'smooth' });
-      }
-    };
-    const startProy = () => { proyTimer = setInterval(proyStep, 3800); };
-    const stopProy = () => clearInterval(proyTimer);
-    startProy();
-    proyTrack.addEventListener('mouseenter', stopProy);
-    proyTrack.addEventListener('mouseleave', startProy);
-    proyTrack.addEventListener('touchstart', stopProy, { passive: true });
-    proyTrack.addEventListener('touchend', () => { stopProy(); setTimeout(startProy, 4500); }, { passive: true });
-  }
-
   // Formulario de contacto -> abre el canal elegido con un mensaje ya estructurado
   const contactForm = document.getElementById('contactForm');
   const val = (v) => v || 'No indicado';
