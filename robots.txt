@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parcehd.github.io/cema27-web/sitemap.xml
