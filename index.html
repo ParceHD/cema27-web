@@ -358,6 +358,15 @@
   }
   .serv-list-item.active .serv-desc { max-height: 200px; opacity: 1; margin-top: 14px; }
   .serv-desc p { color: var(--gray-light); opacity: 0.8; font-size: 0.98rem; max-width: 460px; }
+  .serv-mobile-photo { display: none; }
+  @media (max-width: 959px) {
+    .serv-mobile-photo {
+      display: block; height: 0; overflow: hidden; border-radius: 4px;
+      background-size: cover; background-position: center;
+      transition: height .4s ease, margin-top .4s ease;
+    }
+    .serv-list-item.active .serv-mobile-photo { height: 200px; margin-top: 18px; }
+  }
 
   .serv-visual {
     position: relative; min-height: 320px; border-left: none; overflow: hidden;
@@ -640,18 +649,22 @@
           <div class="serv-list-item active" data-p="1" tabindex="0" role="button" aria-pressed="true">
             <div class="serv-list-head"><span class="serv-num">01</span><span class="serv-title" data-i18n="serv1_title">Trabajos de calderería</span></div>
             <div class="serv-desc"><p data-i18n="serv1_desc">Fabricación y trabajos de calderería en acero inoxidable y hierro, con acabados profesionales y soluciones adaptadas a cada necesidad.</p></div>
+            <div class="serv-mobile-photo" style="background-image:url('assets/cema27/servicios/cerrajeria.jpg')"></div>
           </div>
           <div class="serv-list-item" data-p="2" tabindex="0" role="button" aria-pressed="false">
             <div class="serv-list-head"><span class="serv-num">02</span><span class="serv-title" data-i18n="serv2_title">Suministros</span></div>
             <div class="serv-desc"><p data-i18n="serv2_desc">Suministro de materiales y componentes para proyectos industriales y particulares.</p></div>
+            <div class="serv-mobile-photo" style="background-image:url('assets/cema27/servicios/suministros.jpg')"></div>
           </div>
           <div class="serv-list-item" data-p="4" tabindex="0" role="button" aria-pressed="false">
             <div class="serv-list-head"><span class="serv-num">03</span><span class="serv-title" data-i18n="serv4_title">Instalaciones industriales</span></div>
             <div class="serv-desc"><p data-i18n="serv4_desc">Ejecución de instalaciones industriales eficientes y profesionales adaptadas a las necesidades de cada proyecto.</p></div>
+            <div class="serv-mobile-photo" style="background-image:url('assets/cema27/servicios/instalaciones.jpg')"></div>
           </div>
           <div class="serv-list-item" data-p="5" tabindex="0" role="button" aria-pressed="false">
             <div class="serv-list-head"><span class="serv-num">04</span><span class="serv-title" data-i18n="serv5_title">Diseños a medida y mejora productiva</span></div>
             <div class="serv-desc"><p data-i18n="serv5_desc">Desarrollo de soluciones personalizadas, desde el diseño inicial hasta la fabricación final, orientadas a mejorar el proceso productivo.</p></div>
+            <div class="serv-mobile-photo" style="background-image:url('assets/cema27/servicios/diseno-fabricacion.jpg')"></div>
           </div>
         </div>
         <div class="serv-visual">
